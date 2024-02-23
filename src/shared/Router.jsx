@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "../pages/landing/Landing";
-import Room from "../pages/room/Room";
+import Landing from "@/pages/landing/Landing";
+import Room from "@/pages/room/Room";
 
 const Router = () => {
   return (
