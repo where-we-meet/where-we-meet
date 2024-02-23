@@ -1,4 +1,6 @@
+import KakaoMap from "@/components/units/room/KakaoMap";
+
 function Room() {
-  return <p>Room</p>;
+  return <KakaoMap />;
 }
 export default Room;

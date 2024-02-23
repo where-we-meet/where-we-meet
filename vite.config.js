@@ -13,6 +13,7 @@ export default defineConfig({
       { find: "@redux", replacement: "/src/redux" },
       { find: "@shared", replacement: "/src/shared" },
       { find: "@util", replacement: "/src/util" },
+      { find: "@hooks", replacement: "/src/hooks" },
     ],
   },
 });
