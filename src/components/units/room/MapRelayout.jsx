@@ -6,16 +6,12 @@ export default function MapRelayout() {
   useKakaoLoader()
   const mapRef = useRef(null)
 
-  const [mapSize, setMapSize] = useState({
-    width: "100%",
-    height: "350px",
-  })
+  const [onClickToggleButton, setOnClickToggleButton] = useState(false);
+
+  const mapSize = onClickToggleButton ? { width: '650px', height: '650px' } : { width: '100%', height: '350px' }
 
   const resizeMap = () => {
-    setMapSize({
-      width: "650px",
-      height: "650px",
-    })
+    setOnClickToggleButton(!onClickToggleButton)
     setTimeout(() => {
       mapRef.current?.relayout()
     }, 0)
