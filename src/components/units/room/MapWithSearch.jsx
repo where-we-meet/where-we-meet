@@ -25,17 +25,20 @@ function MapWithSearch() {
     }
   };
 
-  const handleSetLocation = (event) => {
+  const handleSetMyLocation = (event) => {
     event.preventDefault();
   };
 
+  const postDataToDB = async (data) => {
+    //await axios.post('localhost')
+  };
   useEffect(() => {
     const getSearchResult = async () => {
       try {
         if (searchKeyword === '') return;
         const resultList = await client.get('', {
           params: {
-            query: searchKeyword // 검색 키워드를 쿼리로 추가
+            query: searchKeyword
           }
         });
         setPlaceList(resultList.data.documents);
@@ -59,7 +62,7 @@ function MapWithSearch() {
             <p className={style.place_name}>{place.place_name}</p>
             <p className={style.road_address_name}>{place.road_address_name}</p>
             <p className={style.category_group_name}>{place.category_group_name}</p>
-            <button onClick={handleSetLocation}>이 위치로 지정</button>
+            <button onClick={handleSetMyLocation}>이 위치로 지정</button>
           </div>
         ))}
       </div>
