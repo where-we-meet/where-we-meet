@@ -30,8 +30,9 @@ function MapWithSearch() {
   };
 
   const postDataToDB = async (data) => {
-    //await axios.post('localhost')
+    //await axios.post('http://localhost:4000/rooms')
   };
+
   useEffect(() => {
     const getSearchResult = async () => {
       try {
