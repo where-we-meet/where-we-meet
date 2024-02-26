@@ -12,17 +12,31 @@
   background-color: aliceblue;
   line-height: 3px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .place_name{
   font-weight: 600;
+  flex-grow: 1;
+  display: block;
+  padding : 5px;
+  margin : 5px 0px;
 }
 
 .road_address_name{
+  padding : 5px;
   font-size: 14px;
+  flex-grow: 1;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .category_group_name{
+  padding : 5px;
   color: gray;
   font-size: 14px;
+  flex-grow: 1;
+  display: block;
+  margin-bottom: 5px;
 }
