@@ -30,7 +30,7 @@ export const createRoom = async (roomName) => {
 };
 
 export const getRoomData = async (id) => {
-  const response = await roomApi.get(`/rooms/${id}`);
+  const response = await roomApi.get(`/rooms/${id}?_embed=users`);
   return response.data;
 };
 
