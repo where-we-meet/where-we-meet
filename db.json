@@ -7,7 +7,8 @@
   ],
   "users": [
     {
-      "id": "나의찬",
+      "id": "1",
+      "nickname": "나의찬",
       "pwd": "1234",
       "location": {
         "lat": 33.450705,
@@ -16,7 +17,8 @@
       "roomId": "1234"
     },
     {
-      "id": "박강토",
+      "id": "2",
+      "nickname": "박강토",
       "pwd": "1234",
       "location": {
         "lat": 33.450936,
@@ -25,7 +27,8 @@
       "roomId": "1234"
     },
     {
-      "id": "이참",
+      "id": "3",
+      "nickname": "이참",
       "pwd": "1234",
       "location": {
         "lat": 33.451979,
@@ -34,7 +37,8 @@
       "roomId": "1234"
     },
     {
-      "id": "양희철",
+      "id": "4",
+      "nickname": "양희철",
       "pwd": "1234",
       "location": {
         "lat": 33.451393,
@@ -44,7 +48,8 @@
     },
 
     {
-      "id": "jsonSever망해라",
+      "id": "5",
+      "nickname": "jsonSever망해라",
       "pwd": "1234",
       "location": {
         "lat": 33.5563,
