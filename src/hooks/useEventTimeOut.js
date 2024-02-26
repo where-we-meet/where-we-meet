@@ -1,4 +1,4 @@
-const { useEffect } = require('react');
+import { useEffect } from 'react';
 
 function useEventTimeOut(sec, callback, event) {
   useEffect(() => {

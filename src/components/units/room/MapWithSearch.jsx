@@ -9,14 +9,16 @@ function MapWithSearch() {
 
   const handleOnKeywordChange = (event) => {
     setSearchKeyword(event.target.value);
+    _handleUpdateLocation(event);
   };
 
-  const handleMoveLocation = (event) => {
-    useEventTimeOut(event, 3);
+  const _handleUpdateLocation = (event) => {
+    useEventTimeOut({ event: event.type, callback: handlePostLocationData, sec: 3 });
   };
 
-  const handlePostLocationData = async () => {};
-  
+  const handlePostLocationData = async () => {
+    console.log('Sending location data...');
+  };
   const handleKeywordSubmit = async (event) => {
     event.preventDefault();
     try {
