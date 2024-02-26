@@ -53,11 +53,10 @@ function MapWithSearch({ setViewPoint }) {
     return () => {
       clearInterval(id);
     };
-  }, [searchKeyword]);
+  }, [placeList]);
 
   // 3초 뒤 viewpoint 변경 (state update)
   const handleChangeViewPoint = async () => {
-    console.log('Sending location data...');
     const place = placeList[0];
     const newViewPointLocation = { lat: place.y, lng: place.x };
     setViewPoint(newViewPointLocation);
