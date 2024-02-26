@@ -63,9 +63,9 @@ function MapWithSearch({ setViewPoint }) {
   };
 
   // 버튼 클릭 시 위치 지정 (db update)
-  // const handleSetMyLocation = (event, { lat, lng }) => {
-  //   event.preventDefault();
-  // };
+  const handleSetMyLocation = (newUserLocation) => {
+    setViewPoint(newUserLocation);
+  };
 
   return (
     <>
@@ -79,7 +79,13 @@ function MapWithSearch({ setViewPoint }) {
             <p className={style.place_name}>{place.place_name}</p>
             <p className={style.road_address_name}>{place.road_address_name}</p>
             <p className={style.category_group_name}>{place.category_group_name}</p>
-            <button onClick={() => {}}>이 위치로 지정</button>
+            <button
+              onClick={() => {
+                handleSetMyLocation({ lat: place.y, lng: place.x });
+              }}
+            >
+              이 위치로 지정
+            </button>
           </div>
         ))}
       </div>
@@ -88,4 +94,3 @@ function MapWithSearch({ setViewPoint }) {
 }
 
 export default MapWithSearch;
-//handleSetMyLocation({ lat: place.y, lng: place.x })
