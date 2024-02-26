@@ -18,6 +18,7 @@ function KakaoMap() {
 
   if (loading) return <div>Loading</div>;
 
+
   return (
     <Map
       center={{ lat: 33.450701, lng: 126.570667 }}
