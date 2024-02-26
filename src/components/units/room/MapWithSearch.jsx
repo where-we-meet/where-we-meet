@@ -1,6 +1,7 @@
 import { client } from '@/utils/getKeywordSearchList';
 import { useEffect, useState } from 'react';
 import style from './MapWithSearch.module.css';
+import useEventTimeOut from '@/hooks/useEventTimeOut';
 
 function MapWithSearch() {
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -10,6 +11,12 @@ function MapWithSearch() {
     setSearchKeyword(event.target.value);
   };
 
+  const handleMoveLocation = (event) => {
+    useEventTimeOut(event, 3);
+  };
+
+  const handlePostLocationData = async () => {};
+  
   const handleKeywordSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -27,10 +34,6 @@ function MapWithSearch() {
 
   const handleSetMyLocation = (event) => {
     event.preventDefault();
-  };
-
-  const postDataToDB = async (data) => {
-    //await axios.post('http://localhost:4000/rooms')
   };
 
   useEffect(() => {
