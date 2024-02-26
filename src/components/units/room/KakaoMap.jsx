@@ -1,15 +1,16 @@
 import useKakaoLoader from '@/hooks/useKakaoLoader';
 import { useState } from 'react';
-import { Map } from "react-kakao-maps-sdk";
+import { Map } from 'react-kakao-maps-sdk';
 import KakaoMapCircle from './KakaoMapCircle';
-import Halfway from "./Halfway";
+import Halfway from './Halfway';
+import MapWithSearch from './MapWithSearch';
 
 const MARKERS = [
   { lat: 33.450705, lng: 126.570677 },
   { lat: 33.450936, lng: 126.569477 },
   { lat: 33.451979, lng: 126.56994 },
   { lat: 33.451393, lng: 126.570738 },
-  { lat: 33.451493, lng: 126.571018 },
+  { lat: 33.451493, lng: 126.571018 }
 ];
 
 function KakaoMap() {
@@ -17,7 +18,6 @@ function KakaoMap() {
   const [zoomLevel, setZoomLevel] = useState(3);
 
   if (loading) return <div>Loading</div>;
-
 
   return (
     <Map
@@ -30,6 +30,7 @@ function KakaoMap() {
     >
       <Halfway markers={MARKERS} />
       <KakaoMapCircle zoomLevel={zoomLevel} />
+      <MapWithSearch />
     </Map>
   );
 }
