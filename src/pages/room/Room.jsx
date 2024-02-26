@@ -1,8 +1,6 @@
-// import KakaoMap from "@/components/units/room/KakaoMap";
-import MapRelayout from "@/components/units/room/MapRelayout";
+import KakaoMap from "@/components/units/room/KakaoMap";
 
 function Room() {
-  // return <KakaoMap />;
-  return <MapRelayout />
+  return <KakaoMap />;
 }
 export default Room;
