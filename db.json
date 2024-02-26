@@ -3,10 +3,6 @@
     {
       "id": "1234",
       "roomName": "개발자모드"
-    },
-    {
-      "id": "2f3d",
-      "roomName": "가나다라"
     }
   ],
   "users": [
@@ -50,6 +46,7 @@
       },
       "roomId": "1234"
     },
+
     {
       "id": "5",
       "nickname": "jsonSever망해라",
