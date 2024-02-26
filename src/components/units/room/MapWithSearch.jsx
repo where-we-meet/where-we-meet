@@ -1,7 +1,6 @@
 import { client } from '@/utils/getKeywordSearchList';
 import { useEffect, useState } from 'react';
 import style from './MapWithSearch.module.css';
-import useEventTimeOut from '@/hooks/useEventTimeOut';
 
 function MapWithSearch() {
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -9,11 +8,6 @@ function MapWithSearch() {
 
   const handleOnKeywordChange = (event) => {
     setSearchKeyword(event.target.value);
-    _handleUpdateLocation(event);
-  };
-
-  const _handleUpdateLocation = (event) => {
-    useEventTimeOut({ event: event.type, callback: handlePostLocationData, sec: 3 });
   };
 
   const handlePostLocationData = async () => {
@@ -34,7 +28,7 @@ function MapWithSearch() {
     }
   };
 
-  const handleSetMyLocation = (event) => {
+  const handleSetMyLocation = (event, { lat, lng }) => {
     event.preventDefault();
   };
 
@@ -54,6 +48,11 @@ function MapWithSearch() {
     };
 
     getSearchResult();
+    //handleUpdateLocation
+    const id = setTimeout(handlePostLocationData, 3 * 1000);
+    return () => {
+      clearInterval(id);
+    };
   }, [searchKeyword]);
 
   return (
@@ -68,7 +67,7 @@ function MapWithSearch() {
             <p className={style.place_name}>{place.place_name}</p>
             <p className={style.road_address_name}>{place.road_address_name}</p>
             <p className={style.category_group_name}>{place.category_group_name}</p>
-            <button onClick={handleSetMyLocation}>이 위치로 지정</button>
+            <button onClick={handleSetMyLocation({ lat: place.y, lng: place.x })}>이 위치로 지정</button>
           </div>
         ))}
       </div>
