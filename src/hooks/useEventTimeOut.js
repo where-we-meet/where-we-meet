@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function useEventTimeOut(sec, callback, event) {
+function useEventTimeOut({ sec, callback, event }) {
   useEffect(() => {
     const id = setTimeout(callback, sec * 1000);
     return () => {
