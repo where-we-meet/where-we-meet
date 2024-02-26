@@ -24,4 +24,14 @@ roomApi.interceptors.response.use(
   }
 );
 
+export const createRoom = async (roomName) => {
+  const response = await roomApi.post('/rooms', { roomName });
+  return response.data;
+};
+
+export const getRoomData = async (id) => {
+  const response = await roomApi.get(`/rooms/${id}`);
+  return response.data;
+};
+
 export default roomApi;
