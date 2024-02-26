@@ -1,0 +1,28 @@
+.places_container{
+  position : absolute;
+  height : 500px;
+  z-index: 9999;
+  overflow-y: scroll;
+}
+
+.place_info_container{
+  width: 400px;
+  padding : 10px;
+  border : 1px solid black;
+  background-color: aliceblue;
+  line-height: 3px;
+  overflow: hidden;
+}
+
+.place_name{
+  font-weight: 600;
+}
+
+.road_address_name{
+  font-size: 14px;
+}
+
+.category_group_name{
+  color: gray;
+  font-size: 14px;
+}
