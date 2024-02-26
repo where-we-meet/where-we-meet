@@ -20,18 +20,20 @@ function KakaoMap() {
   if (loading) return <div>Loading</div>;
 
   return (
-    <Map
-      center={{ lat: 33.450701, lng: 126.570667 }}
-      style={{ width: '100%', height: '360px' }}
-      onZoomChanged={(map) => {
-        const level = map.getLevel();
-        setZoomLevel(level);
-      }}
-    >
-      <Halfway markers={MARKERS} />
-      <KakaoMapCircle zoomLevel={zoomLevel} />
+    <>
       <MapWithSearch />
-    </Map>
+      <Map
+        center={{ lat: 33.450701, lng: 126.570667 }}
+        style={{ width: '100%', height: '360px' }}
+        onZoomChanged={(map) => {
+          const level = map.getLevel();
+          setZoomLevel(level);
+        }}
+      >
+        <Halfway markers={MARKERS} />
+        <KakaoMapCircle zoomLevel={zoomLevel} />
+      </Map>
+    </>
   );
 }
 
