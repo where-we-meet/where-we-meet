@@ -1,3 +1,32 @@
+.form {
+  position: relative;
+  display: flex;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.form > input {
+  flex: 1;
+  padding: 0.7rem;
+  border: none;
+  outline: none;
+}
+
+.form > button {
+  position: absolute;
+  right: 0.3rem;
+  padding: 0.7rem;
+  border: none;
+  background-color: transparent;
+}
+
+.form svg {
+  color: #ddd;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 .places_container {
   position: absolute;
   height: 500px;
