@@ -20,7 +20,7 @@ function MapWithSearch({ setViewPoint }) {
   const handleKeywordSubmit = async (event) => {
     event.preventDefault();
     const [place] = placeList;
-    await setViewPoint(changeAxiosToViewPoint(place));
+    setViewPoint(changeAxiosToViewPoint(place));
   };
 
   //검색어 바뀔 때마다 결과 리스트 받아오기
@@ -56,9 +56,9 @@ function MapWithSearch({ setViewPoint }) {
   };
 
   //viewpoint 변경 (state update)
-  const handleChangeViewPoint = () => {
+  const handleChangeViewPoint = async () => {
     const [place] = placeList;
-    setViewPoint(changeAxiosToViewPoint(place));
+    await setViewPoint(changeAxiosToViewPoint(place));
   };
 
   // 버튼 클릭 시 위치 지정 (db update)
