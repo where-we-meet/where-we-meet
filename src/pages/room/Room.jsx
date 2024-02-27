@@ -5,15 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import SignInForm from '@/components/units/room/SignInForm';
 import { useState } from 'react';
-
-const persist = {
-  get: (key) => {
-    JSON.parse(sessionStorage.getItem(key));
-  },
-  set: (key, value) => {
-    sessionStorage.setItem(key, JSON.stringify(value));
-  }
-};
+import persist from '@/utils/persist';
 
 function Room() {
   const { id } = useParams();
@@ -39,6 +31,7 @@ function Room() {
     const newUser = { id: crypto.randomUUID(), nickname, pwd: password, roomId: id };
     mutateNewUser(newUser);
     persist.set('userInfo', newUser);
+    setCurrentUser(newUser);
   };
 
   const handleSignIn = async (e) => {
