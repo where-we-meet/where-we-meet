@@ -4,6 +4,7 @@ import { Map } from 'react-kakao-maps-sdk';
 import KakaoMapCircle from './KakaoMapCircle';
 import Halfway from './Halfway';
 import MapWithSearch from './MapWithSearch';
+import styles from './KakaoMap.module.css';
 
 const MARKERS = [
   { lat: 33.450705, lng: 126.570677 },
@@ -25,7 +26,7 @@ function KakaoMap() {
       <MapWithSearch setViewPoint={setViewPoint} />
       <Map
         center={viewPoint}
-        style={{ width: '100%', height: '360px' }}
+        className={styles.map}
         onZoomChanged={(map) => {
           const level = map.getLevel();
           setZoomLevel(level);
