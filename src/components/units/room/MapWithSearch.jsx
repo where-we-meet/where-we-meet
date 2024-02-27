@@ -1,6 +1,9 @@
 import { client } from '@/apis/keywordSearchListAPI';
 import { useEffect, useState } from 'react';
-import style from './MapWithSearch.module.css';
+import styles from './MapWithSearch.module.css';
+import { getRoomData } from '@/apis/roomApi';
+import { useParams } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import persist from '@/utils/persist';
 import * as roomApi from '@/apis/roomApi';
@@ -91,17 +94,19 @@ function MapWithSearch({ setViewPoint }) {
 
   return (
     <>
-      <form onSubmit={handleKeywordSubmit}>
+      <form className={styles.form} onSubmit={handleKeywordSubmit}>
         <input id="search-form" placeholder="내 위치 등록하기" value={searchKeyword} onChange={handleOnKeywordChange} />
-        <button type="submit">검색</button>
+        <button type="submit">
+          <FaSearch />
+        </button>
       </form>
       {placeList.length > 0 ? (
-        <div className={style.places_container}>
+        <div className={styles.places_container}>
           {placeList.map((place) => (
-            <div key={place.id} className={style.place_info_container}>
-              <p className={style.place_name}>{place.place_name}</p>
-              <p className={style.road_address_name}>{place.road_address_name}</p>
-              <p className={style.category_group_name}>{place.category_group_name}</p>
+            <div key={place.id} className={styles.place_info_container}>
+              <p className={styles.place_name}>{place.place_name}</p>
+              <p className={styles.road_address_name}>{place.road_address_name}</p>
+              <p className={styles.category_group_name}>{place.category_group_name}</p>
               <button
                 onClick={() => {
                   handleSetMyLocation(place);
