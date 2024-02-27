@@ -20,7 +20,7 @@ function MapWithSearch({ setViewPoint }) {
   const handleKeywordSubmit = async (event) => {
     event.preventDefault();
     const [place] = placeList;
-    setViewPoint(changeAxiosToViewPoint(place));
+    await setViewPoint(changeAxiosToViewPoint(place));
   };
 
   //검색어 바뀔 때마다 결과 리스트 받아오기
