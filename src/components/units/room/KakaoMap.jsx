@@ -32,7 +32,7 @@ function KakaoMap() {
         }}
       >
         <Halfway markers={MARKERS} />
-        <KakaoMapCircle zoomLevel={zoomLevel} />
+        <KakaoMapCircle center={viewPoint} zoomLevel={zoomLevel} />
       </Map>
     </>
   );
