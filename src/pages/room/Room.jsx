@@ -1,16 +1,18 @@
 import * as roomApi from '@/apis/roomApi';
 import styles from './Room.module.css';
 import KakaoMap from '@/components/units/room/KakaoMap';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import SignInForm from '@/components/units/room/SignInForm';
 import { useState } from 'react';
 import persist from '@/utils/persist';
+import MapWithSearch from '@/components/units/room/MapWithSearch';
 
 function Room() {
   const { id } = useParams();
   const { data, isLoading } = useQuery({ queryKey: ['room'], queryFn: () => roomApi.getRoomData(id) });
   const [currentUser, setCurrentUser] = useState(persist.get('userInfo'));
+  const [viewPoint, setViewPoint] = useState({ lat: 33.450701, lng: 126.570667 });
 
   const isLoggedIn = !!currentUser;
 
@@ -57,8 +59,16 @@ function Room() {
 
   return (
     <div className={styles.container}>
+      <header className={styles.header}>
+        <h1>{data.roomName}</h1>
+        <Link to="/" className={styles.subtitle}>
+          where we meet?
+        </Link>
+      </header>
+      <section className={styles.search}>
+        <MapWithSearch setViewPoint={setViewPoint} />
+      </section>
       <section className={styles.left}>
-        <h1 className={styles.title}>{data.roomName}</h1>
         {isLoggedIn ? (
           <div>
             <p>나</p>
@@ -69,7 +79,7 @@ function Room() {
         )}
       </section>
       <section className={styles.right}>
-        <KakaoMap />
+        <KakaoMap viewPoint={viewPoint} />
       </section>
     </div>
   );
