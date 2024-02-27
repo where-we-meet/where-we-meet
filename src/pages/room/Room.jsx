@@ -68,7 +68,7 @@ function Room() {
         {isLoggedIn ? (
           <div className={styles.user_info}>
             <p>{currentUser.nickname}</p>
-            <KakaoTalkShare />
+            <KakaoTalkShare room={data} />
           </div>
         ) : (
           <SignInForm handleSignIn={handleSignIn} />
