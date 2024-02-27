@@ -3,55 +3,55 @@
 @font-face {
   font-family: AppleSDGothicNeo;
   font-weight: 100;
-  src: url(@/assets/font/AppleSDGothicNeoT.woff2) format('woff2');
+  src: url(./assets/font/AppleSDGothicNeoT.woff2) format('woff2');
 }
 
 @font-face {
   font-family: AppleSDGothicNeo;
   font-weight: 200;
-  src: url(@/assets/font/AppleSDGothicNeoUL.woff2) format('woff2');
+  src: url(./assets/font/AppleSDGothicNeoUL.woff2) format('woff2');
 }
 
 @font-face {
   font-family: AppleSDGothicNeo;
   font-weight: 300;
-  src: url(@/assets/font/AppleSDGothicNeoL.woff2) format('woff2');
+  src: url(./assets/font/AppleSDGothicNeoL.woff2) format('woff2');
 }
 
 @font-face {
   font-family: AppleSDGothicNeo;
   font-weight: 400;
-  src: url(@/assets/font/AppleSDGothicNeoR.woff2) format('woff2');
+  src: url(../public/fonts/AppleSDGothicNeoR.woff2) format('woff2');
 }
 
 @font-face {
   font-family: AppleSDGothicNeo;
   font-weight: 500;
-  src: url(@/assets/font/AppleSDGothicNeoM.woff2) format('woff2');
+  src: url(../public/fonts/AppleSDGothicNeoM.woff2) format('woff2');
 }
 
 @font-face {
   font-family: AppleSDGothicNeo;
   font-weight: 600;
-  src: url(@/assets/font/AppleSDGothicNeoSB.woff2) format('woff2');
+  src: url(../public/fonts/AppleSDGothicNeoSB.woff2) format('woff2');
 }
 
 @font-face {
   font-family: AppleSDGothicNeo;
   font-weight: 700;
-  src: url(@/assets/font/AppleSDGothicNeoB.woff2) format('woff2');
+  src: url(../public/fonts/AppleSDGothicNeoB.woff2) format('woff2');
 }
 
 @font-face {
   font-family: AppleSDGothicNeo;
   font-weight: 800;
-  src: url(@/assets/font/AppleSDGothicNeoEB.woff2) format('woff2');
+  src: url(../public/fonts/AppleSDGothicNeoEB.woff2) format('woff2');
 }
 
 @font-face {
   font-family: AppleSDGothicNeo;
   font-weight: 900;
-  src: url(@/assets/font/AppleSDGothicNeoH.woff2) format('woff2');
+  src: url(../public/fonts/AppleSDGothicNeoH.woff2) format('woff2');
 }
 
 * {
