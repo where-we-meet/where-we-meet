@@ -57,7 +57,7 @@ function MapWithSearch({ setViewPoint }) {
   }, [placeList]);
 
   const changeAxiosToViewPoint = (place) => {
-    return { lat: +place.y, lng: +place.x };
+    return { name: place.place_name, lat: +place.y, lng: +place.x };
   };
 
   //viewpoint 변경 (state update)
