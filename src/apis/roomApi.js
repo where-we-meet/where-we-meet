@@ -34,4 +34,9 @@ export const getRoomData = async (id) => {
   return response.data;
 };
 
+export const createUser = async (userInfo) => {
+  const response = await roomApi.post('/users', userInfo);
+  return response.data;
+};
+
 export default roomApi;
