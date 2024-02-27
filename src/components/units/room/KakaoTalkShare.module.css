@@ -1,0 +1,14 @@
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: none;
+  background-color: #fee500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.btn svg {
+  width: 2rem;
+  height: 2rem;
+}

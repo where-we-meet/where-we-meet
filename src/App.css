@@ -10,6 +10,7 @@
 
 button {
   color: inherit;
+  cursor: pointer;
 }
 
 input {

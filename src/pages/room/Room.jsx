@@ -7,6 +7,8 @@ import { useState } from 'react';
 import persist from '@/utils/persist';
 import MapWithSearch from '@/components/units/room/MapWithSearch';
 import { useCustomMutation } from '@/hooks/useCustomMutation';
+import UserList from '@/components/units/room/UserList';
+import KakaoTalkShare from '@/components/units/room/KakaoTalkShare';
 import { useRoomQuery } from '@/hooks/useRoomQuery';
 
 function Room() {
@@ -64,13 +66,14 @@ function Room() {
       </section>
       <section className={styles.left}>
         {isLoggedIn ? (
-          <div>
-            <p>나</p>
+          <div className={styles.user_info}>
             <p>{currentUser.nickname}</p>
+            <KakaoTalkShare />
           </div>
         ) : (
           <SignInForm handleSignIn={handleSignIn} />
         )}
+        <UserList users={data.users} />
       </section>
       <section className={styles.right}>
         <KakaoMap viewPoint={viewPoint} />

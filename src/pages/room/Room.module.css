@@ -52,3 +52,10 @@
 .right {
   grid-area: right;
 }
+
+.user_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
