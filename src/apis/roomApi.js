@@ -39,4 +39,16 @@ export const createUser = async (userInfo) => {
   return response.data;
 };
 
+export const updateLocation = async (updatedUserInfo) => {
+  try {
+    const response = await roomApi.patch(`/users/${updatedUserInfo.id}`, updatedUserInfo);
+    // console.log('llllll', response);
+    alert('사용자 위치가 업데이트되었습니다.');
+    return response;
+  } catch (error) {
+    console.error('사용자 위치 업데이트 실패:', error);
+    alert('사용자 위치 업데이트에 실패했습니다.');
+  }
+};
+
 export default roomApi;
