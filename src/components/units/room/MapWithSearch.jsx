@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import style from './MapWithSearch.module.css';
 import { getRoomData } from '@/apis/roomApi';
 import { useParams } from 'react-router-dom';
+import persist from '@/utils/persist';
 
 const IDLE_TIME_MS = 3000;
 
@@ -65,9 +66,15 @@ function MapWithSearch({ setViewPoint }) {
   // 버튼 클릭 시 위치 지정 (db update)
   const handleSetMyLocation = async (place) => {
     const data = await getRoomData(roomId);
-    const userLocationInfo = changeAxiosToViewPoint(place);
-    //await axios.post();
-    setViewPoint();
+    const userInfo = persist.get('userInfo');
+    if (userInfo === undefined) {
+      alert('로그인 후 이용해주세요.');
+    } else {
+      const userLocationInfo = changeAxiosToViewPoint(place);
+      await axios.post();
+    }
+
+    //setViewPoint();
   };
 
   return (
