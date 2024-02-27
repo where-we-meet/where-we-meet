@@ -1,12 +1,15 @@
-import { client } from '@/utils/getKeywordSearchList';
+import { client } from '@/apis/keywordSearchListAPI';
 import { useEffect, useState } from 'react';
 import style from './MapWithSearch.module.css';
+import { getRoomData } from '@/apis/roomApi';
+import { useParams } from 'react-router-dom';
 
 const IDLE_TIME_MS = 3000;
 
 function MapWithSearch({ setViewPoint }) {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [placeList, setPlaceList] = useState([]);
+  const { id: roomId } = useParams();
 
   // 검색어 입력 중
   const handleOnKeywordChange = (event) => {
@@ -60,8 +63,10 @@ function MapWithSearch({ setViewPoint }) {
 
   // 버튼 클릭 시 위치 지정 (db update)
   const handleSetMyLocation = async (place) => {
-    await axios.post();
-    setViewPoint(changeAxiosToViewPoint(place));
+    const data = await getRoomData(roomId);
+    const userLocationInfo = changeAxiosToViewPoint(place);
+    //await axios.post();
+    setViewPoint();
   };
 
   return (
