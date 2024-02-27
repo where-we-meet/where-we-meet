@@ -76,22 +76,24 @@ function MapWithSearch({ setViewPoint }) {
         <input id="search-form" placeholder="내 위치 등록하기" value={searchKeyword} onChange={handleOnKeywordChange} />
         <button type="submit">검색</button>
       </form>
-      <div className={style.places_container}>
-        {placeList.map((place) => (
-          <div key={place.id} className={style.place_info_container}>
-            <p className={style.place_name}>{place.place_name}</p>
-            <p className={style.road_address_name}>{place.road_address_name}</p>
-            <p className={style.category_group_name}>{place.category_group_name}</p>
-            <button
-              onClick={() => {
-                handleSetMyLocation(place);
-              }}
-            >
-              이 위치로 지정
-            </button>
-          </div>
-        ))}
-      </div>
+      {placeList.lenght > 0 ? (
+        <div className={style.places_container}>
+          {placeList.map((place) => (
+            <div key={place.id} className={style.place_info_container}>
+              <p className={style.place_name}>{place.place_name}</p>
+              <p className={style.road_address_name}>{place.road_address_name}</p>
+              <p className={style.category_group_name}>{place.category_group_name}</p>
+              <button
+                onClick={() => {
+                  handleSetMyLocation(place);
+                }}
+              >
+                이 위치로 지정
+              </button>
+            </div>
+          ))}
+        </div>
+      ) : null}
     </>
   );
 }
