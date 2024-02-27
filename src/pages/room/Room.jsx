@@ -57,8 +57,8 @@ function Room() {
 
   return (
     <div className={styles.container}>
-      <section>
-        <h1>{data.roomName}</h1>
+      <section className={styles.left}>
+        <h1 className={styles.title}>{data.roomName}</h1>
         {isLoggedIn ? (
           <div>
             <p>나</p>
@@ -68,7 +68,7 @@ function Room() {
           <SignInForm handleSignIn={handleSignIn} />
         )}
       </section>
-      <section>
+      <section className={styles.right}>
         <KakaoMap />
       </section>
     </div>
