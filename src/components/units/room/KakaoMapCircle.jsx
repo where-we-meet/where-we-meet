@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Circle } from 'react-kakao-maps-sdk';
+import styles from './KakaoMapCircle.module.css';
 
 const RADIUS_MAXRANGE = [50, 100, 250, 400, 700, 2000, 5000, 8000, 10000, 10000];
 
@@ -24,11 +25,10 @@ function KakaoMapCircle({ center = { lat: 33.5563, lng: 126.79581 }, zoomLevel }
         fillColor={'#00a0e9'}
         fillOpacity={0.2}
       />
-      <div>
+      <div className={styles.map_control}>
         <input type="range" min={0} max={100} value={radiusPercent} onChange={handleChangeRange}></input>
-        반경 {radius}m
+        반경 {radius}m<button onClick={() => setRadiusPercent(0)}>범위 지우기!</button>
       </div>
-      <button onClick={() => setRadiusPercent(0)}>범위 지우기!</button>
     </>
   );
 }
