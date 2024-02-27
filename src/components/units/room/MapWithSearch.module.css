@@ -1,8 +1,6 @@
 .form {
   position: relative;
   display: flex;
-  border: 2px solid #ddd;
-  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -11,6 +9,15 @@
   padding: 0.7rem;
   border: none;
   outline: none;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+}
+
+.form > input:focus {
+  border-color: #90cc00;
+}
+
+.form > input:focus {
 }
 
 .form > button {
