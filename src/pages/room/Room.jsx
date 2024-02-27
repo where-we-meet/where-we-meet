@@ -3,10 +3,11 @@ import styles from './Room.module.css';
 import KakaoMap from '@/components/units/room/KakaoMap';
 import { useParams } from 'react-router-dom';
 import KaKaoTalkShare from '@/components/units/room/KaKaoTalkShare';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import SignInForm from '@/components/units/room/SignInForm';
 import { useState } from 'react';
 import persist from '@/utils/persist';
+import { useCustomMutation } from '@/hooks/useCustomMutation';
 
 function Room() {
   const { id } = useParams();
@@ -15,14 +16,7 @@ function Room() {
 
   const isLoggedIn = !!currentUser;
 
-  const queryClient = useQueryClient();
-
-  const { mutate: mutateNewUser } = useMutation({
-    mutationFn: roomApi.createUser,
-    onSuccess: () => {
-      queryClient.invalidateQueries(['room']);
-    }
-  });
+  const mutateNewUser = useCustomMutation(roomApi.createUser);
 
   const getExistUser = (nickname) => {
     return data.users.find((user) => user.nickname === nickname);

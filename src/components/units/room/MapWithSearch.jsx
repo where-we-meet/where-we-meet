@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import style from './MapWithSearch.module.css';
 import { useParams } from 'react-router-dom';
 import persist from '@/utils/persist';
-import { jsonDB } from '@/utils/setUserLocation';
+import * as roomApi from '@/apis/roomApi';
+import { useCustomMutation } from '@/hooks/useCustomMutation';
 
 const IDLE_TIME_MS = 3000;
 
@@ -11,6 +12,8 @@ function MapWithSearch({ setViewPoint }) {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [placeList, setPlaceList] = useState([]);
   const { id: roomId } = useParams();
+
+  const patchUserLocation = useCustomMutation(roomApi.updateLocation);
 
   // 검색어 입력 중
   const handleOnKeywordChange = (event) => {
@@ -79,13 +82,7 @@ function MapWithSearch({ setViewPoint }) {
       location: changeAxiosToViewPoint(place)
     };
 
-    try {
-      await jsonDB.patch(`/users/${userInfo.id}`, updatedUserInfo);
-      alert('사용자 위치가 업데이트되었습니다.');
-    } catch (error) {
-      console.error('사용자 위치 업데이트 실패:', error);
-      alert('사용자 위치 업데이트에 실패했습니다.');
-    }
+    patchUserLocation(updatedUserInfo);
   };
 
   const handleSetMyLocation = async (place) => {
