@@ -2,6 +2,8 @@ import { client } from '@/utils/getKeywordSearchList';
 import { useEffect, useState } from 'react';
 import style from './MapWithSearch.module.css';
 
+const IDLE_TIME_MS = 3000;
+
 function MapWithSearch({ setViewPoint }) {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [placeList, setPlaceList] = useState([]);
@@ -14,17 +16,8 @@ function MapWithSearch({ setViewPoint }) {
   //검색어 입력 완료 후
   const handleKeywordSubmit = async (event) => {
     event.preventDefault();
-    try {
-      if (searchKeyword === '') return;
-      const resultList = await client.get('', {
-        params: {
-          query: searchKeyword // 검색 키워드를 쿼리로 추가
-        }
-      });
-      setPlaceList(resultList.data.documents);
-    } catch (error) {
-      console.error(error);
-    }
+    const [place] = placeList;
+    setViewPoint(changeAxiosToViewPoint(place));
   };
 
   //검색어 바뀔 때마다 결과 리스트 받아오기
@@ -49,22 +42,25 @@ function MapWithSearch({ setViewPoint }) {
   //3초 간격 안에 이벤트가 없으면 view point 전환
   useEffect(() => {
     //handleUpdateLocation
-    const id = setTimeout(handleChangeViewPoint, 3 * 1000);
+    const id = setTimeout(handleChangeViewPoint, IDLE_TIME_MS);
     return () => {
       clearInterval(id);
     };
   }, [placeList]);
 
-  // 3초 뒤 viewpoint 변경 (state update)
-  const handleChangeViewPoint = async () => {
-    const place = placeList[0];
-    const newViewPointLocation = { lat: place.y, lng: place.x };
-    setViewPoint(newViewPointLocation);
+  const changeAxiosToViewPoint = (place) => {
+    return { lat: place.y, lng: place.x };
+  };
+
+  //viewpoint 변경 (state update)
+  const handleChangeViewPoint = () => {
+    const [place] = placeList;
+    setViewPoint(changeAxiosToViewPoint(place));
   };
 
   // 버튼 클릭 시 위치 지정 (db update)
-  const handleSetMyLocation = (newUserLocation) => {
-    setViewPoint(newUserLocation);
+  const handleSetMyLocation = (place) => {
+    setViewPoint(changeAxiosToViewPoint(place));
   };
 
   return (
@@ -81,7 +77,7 @@ function MapWithSearch({ setViewPoint }) {
             <p className={style.category_group_name}>{place.category_group_name}</p>
             <button
               onClick={() => {
-                handleSetMyLocation({ lat: place.y, lng: place.x });
+                handleSetMyLocation(place);
               }}
             >
               이 위치로 지정
