@@ -76,7 +76,7 @@ function MapWithSearch({ setViewPoint }) {
         <input id="search-form" placeholder="내 위치 등록하기" value={searchKeyword} onChange={handleOnKeywordChange} />
         <button type="submit">검색</button>
       </form>
-      {placeList.lenght > 0 ? (
+      {placeList.length > 0 ? (
         <div className={style.places_container}>
           {placeList.map((place) => (
             <div key={place.id} className={style.place_info_container}>
