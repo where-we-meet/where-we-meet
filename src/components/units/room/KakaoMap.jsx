@@ -14,16 +14,16 @@ const MARKERS = [
   { lat: 33.451493, lng: 126.571018 }
 ];
 
-function KakaoMap() {
+function KakaoMap({ viewPoint }) {
   const [loading, error] = useKakaoLoader();
   const [zoomLevel, setZoomLevel] = useState(3);
-  const [viewPoint, setViewPoint] = useState({ lat: 33.450701, lng: 126.570667 });
+  // const [viewPoint, setViewPoint] = useState({ lat: 33.450701, lng: 126.570667 });
 
   if (loading) return <div>Loading</div>;
 
   return (
     <>
-      <MapWithSearch setViewPoint={setViewPoint} />
+      {/* <MapWithSearch setViewPoint={setViewPoint} /> */}
       <Map
         center={viewPoint}
         className={styles.map}
@@ -33,7 +33,7 @@ function KakaoMap() {
         }}
       >
         <Halfway markers={MARKERS} />
-        <KakaoMapCircle zoomLevel={zoomLevel} />
+        <KakaoMapCircle center={viewPoint} zoomLevel={zoomLevel} />
       </Map>
     </>
   );
