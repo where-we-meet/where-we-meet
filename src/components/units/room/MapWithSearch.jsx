@@ -1,8 +1,9 @@
 import { client } from '@/apis/keywordSearchListAPI';
 import { useEffect, useState } from 'react';
 import style from './MapWithSearch.module.css';
-import { getRoomData } from '@/apis/roomApi';
 import { useParams } from 'react-router-dom';
+import persist from '@/utils/persist';
+import { jsonDB } from '@/utils/setUserLocation';
 
 const IDLE_TIME_MS = 3000;
 
@@ -52,7 +53,7 @@ function MapWithSearch({ setViewPoint }) {
   }, [placeList]);
 
   const changeAxiosToViewPoint = (place) => {
-    return { lat: place.y, lng: place.x };
+    return { lat: +place.y, lng: +place.x };
   };
 
   //viewpoint 변경 (state update)
@@ -62,12 +63,33 @@ function MapWithSearch({ setViewPoint }) {
     setViewPoint(changeAxiosToViewPoint(place));
   };
 
-  // 버튼 클릭 시 위치 지정 (db update)
+  const updateLocation = async (place) => {
+    // 사용자 정보 확인
+    const userInfo = persist.get('userInfo');
+
+    // 사용자 정보가 없는 경우 알림 후 종료
+    if (!userInfo) {
+      alert('로그인 후 이용해주세요.');
+      return;
+    }
+
+    // 사용자 정보 업데이트
+    const updatedUserInfo = {
+      ...userInfo,
+      location: changeAxiosToViewPoint(place)
+    };
+
+    try {
+      await jsonDB.patch(`/users/${userInfo.id}`, updatedUserInfo);
+      alert('사용자 위치가 업데이트되었습니다.');
+    } catch (error) {
+      console.error('사용자 위치 업데이트 실패:', error);
+      alert('사용자 위치 업데이트에 실패했습니다.');
+    }
+  };
+
   const handleSetMyLocation = async (place) => {
-    const data = await getRoomData(roomId);
-    const userLocationInfo = changeAxiosToViewPoint(place);
-    //await axios.post();
-    setViewPoint();
+    await updateLocation(place);
   };
 
   return (
