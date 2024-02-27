@@ -59,7 +59,8 @@ function MapWithSearch({ setViewPoint }) {
   };
 
   // 버튼 클릭 시 위치 지정 (db update)
-  const handleSetMyLocation = (place) => {
+  const handleSetMyLocation = async (place) => {
+    await axios.post();
     setViewPoint(changeAxiosToViewPoint(place));
   };
 
