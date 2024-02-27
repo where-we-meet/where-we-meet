@@ -15,7 +15,7 @@ function Room() {
     <div className={styles.container}>
       <section>{data.roomName}</section>
       <section>
-        <KaKaoTalkShare roomId={id} />
+        <KaKaoTalkShare room={data} />
         <KakaoMap />
       </section>
     </div>
