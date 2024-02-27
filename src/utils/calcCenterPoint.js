@@ -4,17 +4,21 @@ export default function calcCenterPoint(points) {
   let s = 0;
 
   if (points.length === 2) {
-    const lat = (points[0].lat + points[1].lat) / 2;
-    const lng = (points[0].lng + points[1].lng) / 2;
+    const lat = (points[0].location.lat + points[1].location.lat) / 2;
+    const lng = (points[0].location.lng + points[1].location.lng) / 2;
     return { lat, lng };
   }
 
   for (let i = 0; i < points.length; i++) {
     let j = (i + 1) % points.length;
 
-    x += (points[i].lat + points[j].lat) * (points[i].lat * points[j].lng - points[j].lat * points[i].lng);
-    y += (points[i].lng + points[j].lng) * (points[i].lat * points[j].lng - points[j].lat * points[i].lng);
-    s += points[i].lat * points[j].lng - points[j].lat * points[i].lng;
+    x +=
+      (points[i].location.lat + points[j].location.lat) *
+      (points[i].location.lat * points[j].location.lng - points[j].location.lat * points[i].location.lng);
+    y +=
+      (points[i].location.lng + points[j].location.lng) *
+      (points[i].location.lat * points[j].location.lng - points[j].location.lat * points[i].location.lng);
+    s += points[i].location.lat * points[j].location.lng - points[j].location.lat * points[i].location.lng;
   }
   s /= 2;
   x = x / (6 * s);

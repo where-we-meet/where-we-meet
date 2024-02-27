@@ -1,18 +1,37 @@
-import { MapMarker } from 'react-kakao-maps-sdk';
+import { MapMarker, Polygon } from 'react-kakao-maps-sdk';
 import pin from '@assets/icons/map-pin-2-fill.png';
 import flag from '@assets/icons/flag-line.png';
 import calcCenterPoint from '@/utils/calcCenterPoint';
 import convexHull from '@/utils/convexHull';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useRoomQuery } from '@/hooks/useRoomQuery';
 
-const Halfway = ({ markers }) => {
-  const sortedMarkers = convexHull(markers);
+const Halfway = () => {
+  const { id } = useParams();
+  const {
+    data: { users },
+    isLoading
+  } = useRoomQuery(id);
+
+  const [usersData, setUsersData] = useState(users);
+
+  const sortedMarkers = convexHull(usersData.filter((user) => user.location !== undefined));
   const halfwayPoint = calcCenterPoint(sortedMarkers);
+
+  useEffect(() => {
+    setUsersData(users);
+  }, [users]);
+
+  console.log(sortedMarkers);
+
+  if (isLoading) return <>Loading..</>;
   return (
     <>
-      {markers.map((marker) => (
+      {users.map((user) => (
         <MapMarker
-          key={`${marker.lat}-${marker.lng}`}
-          position={marker}
+          key={`${user.nickname}-${user.location}`}
+          position={user.location}
           image={{
             src: pin,
             size: {
@@ -28,6 +47,7 @@ const Halfway = ({ markers }) => {
           }}
         />
       ))}
+
       <MapMarker
         key={'halfway'}
         position={halfwayPoint}
