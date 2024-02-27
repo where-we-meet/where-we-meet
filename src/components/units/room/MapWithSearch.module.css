@@ -1,14 +1,14 @@
-.places_container{
-  position : absolute;
-  height : 500px;
+.places_container {
+  position: absolute;
+  height: 500px;
   z-index: 9999;
   overflow-y: scroll;
 }
 
-.place_info_container{
+.place_info_container {
   width: 400px;
-  padding : 10px;
-  border : 1px solid black;
+  padding: 10px;
+  border: 1px solid black;
   background-color: aliceblue;
   line-height: 3px;
   overflow: hidden;
@@ -16,24 +16,24 @@
   flex-direction: column;
 }
 
-.place_name{
+.place_name {
   font-weight: 600;
   flex-grow: 1;
   display: block;
-  padding : 5px;
-  margin : 5px 0px;
+  padding: 5px;
+  margin: 5px 0px;
 }
 
-.road_address_name{
-  padding : 5px;
+.road_address_name {
+  padding: 5px;
   font-size: 14px;
   flex-grow: 1;
   display: block;
   margin-bottom: 5px;
 }
 
-.category_group_name{
-  padding : 5px;
+.category_group_name {
+  padding: 5px;
   color: gray;
   font-size: 14px;
   flex-grow: 1;
