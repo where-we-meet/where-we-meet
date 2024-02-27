@@ -1,10 +1,8 @@
 import { client } from '@/apis/keywordSearchListAPI';
 import { useEffect, useState } from 'react';
 import styles from './MapWithSearch.module.css';
-import { getRoomData } from '@/apis/roomApi';
 import { useParams } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
-import { useParams } from 'react-router-dom';
 import persist from '@/utils/persist';
 import * as roomApi from '@/apis/roomApi';
 import { useCustomMutation } from '@/hooks/useCustomMutation';
