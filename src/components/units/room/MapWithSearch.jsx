@@ -56,9 +56,10 @@ function MapWithSearch({ setViewPoint }) {
   };
 
   //viewpoint 변경 (state update)
-  const handleChangeViewPoint = async () => {
+  const handleChangeViewPoint = () => {
+    if (placeList.length === 0) return;
     const [place] = placeList;
-    await setViewPoint(changeAxiosToViewPoint(place));
+    setViewPoint(changeAxiosToViewPoint(place));
   };
 
   // 버튼 클릭 시 위치 지정 (db update)
