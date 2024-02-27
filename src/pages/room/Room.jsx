@@ -31,6 +31,7 @@ function Room() {
     const newUser = { id: crypto.randomUUID(), nickname, pwd: password, roomId: id };
     mutateNewUser(newUser);
     persist.set('userInfo', newUser);
+    setCurrentUser(newUser);
   };
 
   const handleSignIn = async (e) => {
