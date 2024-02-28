@@ -1,0 +1,12 @@
+.users {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.users > li {
+  background: #f6f8fa;
+  border-radius: 6px;
+  padding: 1rem;
+}

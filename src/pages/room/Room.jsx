@@ -2,22 +2,24 @@ import * as roomApi from '@/apis/roomApi';
 import styles from './Room.module.css';
 import KakaoMap from '@/components/units/room/KakaoMap';
 import { Link, useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 import SignInForm from '@/components/units/room/SignInForm';
 import { useState } from 'react';
 import persist from '@/utils/persist';
 import MapWithSearch from '@/components/units/room/MapWithSearch';
 import { useCustomMutation } from '@/hooks/useCustomMutation';
+import UserList from '@/components/units/room/UserList';
+import KakaoTalkShare from '@/components/units/room/KakaoTalkShare';
+import { useRoomQuery } from '@/hooks/useRoomQuery';
 
 function Room() {
   const { id } = useParams();
-  const { data, isLoading } = useQuery({ queryKey: ['room'], queryFn: () => roomApi.getRoomData(id) });
+  const { data, isLoading } = useRoomQuery(id);
+  const mutateNewUser = useCustomMutation(roomApi.createUser);
+
   const [currentUser, setCurrentUser] = useState(persist.get('userInfo'));
   const [viewPoint, setViewPoint] = useState({ lat: 33.450701, lng: 126.570667 });
 
   const isLoggedIn = !!currentUser;
-
-  const mutateNewUser = useCustomMutation(roomApi.createUser);
 
   const getExistUser = (nickname) => {
     return data.users.find((user) => user.nickname === nickname);
@@ -64,13 +66,14 @@ function Room() {
       </section>
       <section className={styles.left}>
         {isLoggedIn ? (
-          <div>
-            <p>나</p>
+          <div className={styles.user_info}>
             <p>{currentUser.nickname}</p>
+            <KakaoTalkShare />
           </div>
         ) : (
           <SignInForm handleSignIn={handleSignIn} />
         )}
+        <UserList users={data.users} />
       </section>
       <section className={styles.right}>
         <KakaoMap viewPoint={viewPoint} />

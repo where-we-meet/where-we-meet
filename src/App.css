@@ -68,6 +68,7 @@
 button {
   color: inherit;
   background-color: #fcfcfc;
+  cursor: pointer;
 }
 
 input {

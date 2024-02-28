@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+import { RiKakaoTalkFill } from 'react-icons/ri';
+import styles from './KakaoTalkShare.module.css';
 
-function KaKaoTalkShare({ room }) {
+function KakaoTalkShare({ room }) {
   useEffect(() => {
     const kakaoScript = document.createElement('script');
     kakaoScript.src = 'https://developers.kakao.com/sdk/js/kakao.js';
@@ -28,11 +30,12 @@ function KaKaoTalkShare({ room }) {
 
   return (
     <>
-      <button id="kakaotalk-sharing-btn" onClick={kakaoButton}>
-        카카오톡으로 공유하기
+      <button className={styles.btn} title="공유하기" onClick={kakaoButton}>
+        공유하기
+        <RiKakaoTalkFill />
       </button>
     </>
   );
 }
 
-export default KaKaoTalkShare;
+export default KakaoTalkShare;

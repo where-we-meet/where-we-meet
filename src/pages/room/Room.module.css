@@ -18,7 +18,7 @@
       'right'
       'left';
     grid-template-columns: 1fr;
-    grid-template-rows: 30px 30px 1fr 1fr;
+    grid-template-rows: 30px 30px auto auto;
   }
 }
 
@@ -52,4 +52,11 @@
 
 .right {
   grid-area: right;
+}
+
+.user_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
 }
