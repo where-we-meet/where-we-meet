@@ -3,6 +3,8 @@ export default function calcCenterPoint(points) {
   let y = 0;
   let s = 0;
 
+  if (points === undefined) return;
+  
   if (points.length === 1) {
     const lat = points[0].location.lat;
     const lng = points[0].location.lng;

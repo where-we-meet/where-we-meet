@@ -21,7 +21,7 @@ const Halfway = () => {
   const [usersData, setUsersData] = useState(users);
 
   const hasLocationUsers = usersData.filter((user) => user.location !== undefined);
-  const sortedMarkers = convexHull(usersData.filter((user) => user.location !== undefined));
+  const sortedMarkers = convexHull(hasLocationUsers);
   const halfwayPoint = calcCenterPoint(sortedMarkers);
 
   useEffect(() => {
@@ -56,24 +56,25 @@ const Halfway = () => {
           />
         );
       })}
-
-      <MapMarker
-        key={'halfway'}
-        position={halfwayPoint}
-        image={{
-          src: flag,
-          size: {
-            width: 20,
-            height: 20
-          },
-          options: {
-            offset: {
-              x: 8,
-              y: 16
+      {halfwayPoint && (
+        <MapMarker
+          key={'halfway'}
+          position={halfwayPoint}
+          image={{
+            src: flag,
+            size: {
+              width: 20,
+              height: 20
+            },
+            options: {
+              offset: {
+                x: 8,
+                y: 16
+              }
             }
-          }
-        }}
-      />
+          }}
+        />
+      )}
     </>
   );
 };

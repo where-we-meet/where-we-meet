@@ -42,7 +42,6 @@ export const createUser = async (userInfo) => {
 export const updateLocation = async (updatedUserInfo) => {
   try {
     const response = await roomApi.patch(`/users/${updatedUserInfo.id}`, updatedUserInfo);
-    // console.log('llllll', response);
     alert('사용자 위치가 업데이트되었습니다.');
     return response;
   } catch (error) {
