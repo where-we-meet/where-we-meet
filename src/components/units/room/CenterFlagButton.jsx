@@ -12,6 +12,8 @@ function CenterFlagButton() {
     dispatch(setZoomLevel(3));
   };
 
+  if (center === null) return;
+
   return (
     <button className={style.button} onClick={moveViewPointToCenter}>
       <FaFlag className={style.button_icon} />
