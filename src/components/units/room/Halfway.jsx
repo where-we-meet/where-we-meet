@@ -28,7 +28,9 @@ const Halfway = () => {
     setUsersData(users);
   }, [users]);
 
-  dispatch(setCenterPoint(halfwayPoint));
+  useEffect(() => {
+    dispatch(setCenterPoint(halfwayPoint));
+  }, [halfwayPoint]);
 
   if (isLoading) return <>Loading..</>;
   return (
