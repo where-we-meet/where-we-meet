@@ -1,5 +1,6 @@
 import styles from './SignInForm.module.css';
 import { PiIdentificationCard, PiPassword } from 'react-icons/pi';
+import { RiLoginBoxLine } from "react-icons/ri";
 
 const SignInForm = ({ handleSignIn }) => {
   return (
@@ -12,7 +13,9 @@ const SignInForm = ({ handleSignIn }) => {
         <PiPassword />
         <input type="password" name="password" placeholder="비밀번호(선택)" />
       </label>
-      <button>Sign In</button>
+      <button>
+        <RiLoginBoxLine />
+        로그인</button>
     </form>
   );
 };

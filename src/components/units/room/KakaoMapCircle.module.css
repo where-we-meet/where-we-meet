@@ -5,3 +5,18 @@
   gap: 1rem;
   padding: 1rem 0.5rem;
 }
+
+.map_control button {
+  border: 2px solid #ddd;
+  border-radius: 7px;
+  padding: 0.5rem;
+  font-size: 100%;
+  font-weight: bold;
+  color: #b6b6b6;
+}
+
+.map_control button:hover {
+  border-color: #a4a4a4;
+  background-color: #d9e2f6;
+  color: rgb(36, 41, 36);
+}

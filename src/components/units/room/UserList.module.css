@@ -10,24 +10,21 @@
   flex-direction: column;
   gap: 0.5rem;
   background: #f6f8fa;
+  border: 2px solid transparent;
   border-radius: 6px;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   cursor: pointer;
 }
 
 .users > li:hover {
-  /* background: #f1f1f1; */
-  background-color: #cbffc9;
+  border-color: #ddd;
+  background-color: #d9e2f6;
 }
 
 .users > li > strong {
-  position: relative;
-  left: 4%;
 }
 
 .users > li > p {
-  position: relative;
-  left: 3%;
   font-size: 90%;
   color: #666;
 }

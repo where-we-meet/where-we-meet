@@ -13,8 +13,13 @@
   border-radius: 6px;
 }
 
+.form > input:hover {
+  background-color: #ecf2ff;
+}
+
 .form > input:focus {
-  border-color: #7b8b57;
+  border-color: #a4a4a4;
+  background-color: #d9e2f6;
 }
 
 .form > button {
@@ -26,9 +31,13 @@
 }
 
 .form svg {
-  color: #ddd;
+  color: #b6b6b6;
   width: 1.2rem;
   height: 1.2rem;
+}
+
+.form svg:hover {
+  color: #a4a4a4;
 }
 
 .places_container {
@@ -37,7 +46,6 @@
   z-index: 9999;
   overflow-y: scroll;
   cursor: pointer;
-
 }
 
 .place_info_container {
