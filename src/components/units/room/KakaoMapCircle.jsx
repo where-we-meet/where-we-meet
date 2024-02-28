@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { Circle } from 'react-kakao-maps-sdk';
 import styles from './KakaoMapCircle.module.css';
+import { useSelector } from 'react-redux';
 
-const RADIUS_MAXRANGE = [50, 100, 250, 400, 700, 2000, 5000, 8000, 10000, 10000];
+const RADIUS_MAXRANGE = [50, 100, 250, 400, 700, 2000, 5000, 8000, 10000];
 
-function KakaoMapCircle({ center = { lat: 33.5563, lng: 126.79581 }, zoomLevel }) {
-  const [radiusPercent, setRadiusPercent] = useState(0);
-  const radius = (radiusPercent * RADIUS_MAXRANGE[zoomLevel <= RADIUS_MAXRANGE.length ? zoomLevel : 9]) / 100;
+function KakaoMapCircle({ zoomLevel }) {
+  const [radius, setRadius] = useState(0);
+  const center = useSelector((state) => state.mapSlice.centerPoint);
 
   const handleChangeRange = (e) => {
-    setRadiusPercent(e.target.value);
+    setRadius(e.target.value);
   };
 
   return (
@@ -25,8 +26,14 @@ function KakaoMapCircle({ center = { lat: 33.5563, lng: 126.79581 }, zoomLevel }
         fillOpacity={0.2}
       />
       <div className={styles.map_control}>
-        <input type="range" min={0} max={100} value={radiusPercent} onChange={handleChangeRange}></input>
-        반경 {radius}m<button onClick={() => setRadiusPercent(0)}>범위 지우기!</button>
+        <input
+          type="range"
+          min={0}
+          max={RADIUS_MAXRANGE[Math.min(zoomLevel, 8)]}
+          value={radius}
+          onChange={handleChangeRange}
+        ></input>
+        반경 {radius}m<button onClick={() => setRadius(0)}>범위 지우기!</button>
       </div>
     </>
   );
