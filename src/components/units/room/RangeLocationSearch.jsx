@@ -1,14 +1,15 @@
 import { client } from '@/apis/keywordSearchListAPI';
 import { useEffect, useState } from 'react';
 import { MapMarker } from 'react-kakao-maps-sdk';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import pin from '@assets/icons/map-pin-2-fill.png';
 import style from './RangeLocationSearch.module.css';
+import { setLocationList } from '@/redux/modules/rangeSlice';
 
 function RangeLocationSearch() {
-  const radius = useSelector((state) => state.rangeSlice.range);
+  const dispatch = useDispatch();
+  const { radius, locationList } = useSelector((state) => state.rangeSlice);
   const center = useSelector((state) => state.mapSlice.centerPoint);
-  const [rangeLocationList, setRangeLocationList] = useState([]);
   const [selectedSpot, setSelectedSpot] = useState(null);
   const showSpotInfo = (spot) => {
     setSelectedSpot(spot);
@@ -25,7 +26,7 @@ function RangeLocationSearch() {
           radius: radius
         }
       });
-      setRangeLocationList(resultList.data.documents);
+      dispatch(setLocationList(resultList.data.documents));
     } catch (error) {
       console.error(error);
     }
@@ -37,7 +38,7 @@ function RangeLocationSearch() {
 
   return (
     <div>
-      {rangeLocationList.map((spot) => (
+      {locationList.map((spot) => (
         <div key={spot.id}>
           <MapMarker
             position={{ lng: spot.x, lat: spot.y }}
