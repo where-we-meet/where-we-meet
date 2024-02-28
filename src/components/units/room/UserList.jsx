@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import styles from './UserList.module.css';
 import { setViewPoint } from '@/redux/modules/mapSlice';
+import { FaUserCircle } from 'react-icons/fa';
+import { userColors } from '@/utils/selectUserPins';
 
 function UserList({ users }) {
   const dispatch = useDispatch();
@@ -13,11 +15,12 @@ function UserList({ users }) {
 
   return (
     <ul className={styles.users}>
-      {users.map((user) => {
+      {users.map((user, i) => {
         return (
           <li onClick={() => handleViewPoint(user.location)} key={user.id}>
             <strong>{user.nickname}</strong>
             <p>{user.location?.name}</p>
+            <FaUserCircle style={{ color: `${userColors[i]}` }} />
           </li>
         );
       })}
