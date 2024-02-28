@@ -1,5 +1,4 @@
 .form {
-  position: relative;
   display: flex;
   overflow: hidden;
 }
@@ -42,45 +41,59 @@
 
 .places_container {
   position: absolute;
-  height: 500px;
+  top: 45px;
+  max-width: 350px;
+  width: 100%;
+  max-height: 500px;
   z-index: 9999;
-  overflow-y: scroll;
+  overflow: hidden;
+  overflow-y: overlay;
   cursor: pointer;
-}
-
-.place_info_container {
-  width: 300px;
-  padding: 10px;
-  border: 1px solid black;
+  border: 2px solid #a4a4a4;
   border-radius: 6px;
   background-color: rgb(240, 247, 244);
-  line-height: 3px;
-  overflow: hidden;
+}
+
+.places_container::-webkit-scrollbar {
+  width: 7px;
+  background-color: transparent;
+}
+
+.places_container::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 6px;
+}
+
+.places_container > ul {
   display: flex;
   flex-direction: column;
 }
 
+.places_container > ul > li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+
 .place_name {
-  font-weight: 600;
-  flex-grow: 1;
-  display: block;
-  padding: 5px;
-  margin: 5px 0px;
+  font-weight: bold;
 }
 
 .road_address_name {
-  padding: 5px;
-  font-size: 14px;
-  flex-grow: 1;
-  display: block;
-  margin-bottom: 5px;
+  font-size: 90%;
 }
 
 .category_group_name {
-  padding: 5px;
   color: gray;
   font-size: 14px;
-  flex-grow: 1;
   display: block;
-  margin-bottom: 5px;
+}
+
+.places_container button {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
 }
