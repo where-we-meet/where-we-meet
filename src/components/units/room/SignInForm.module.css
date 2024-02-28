@@ -28,7 +28,7 @@
   top: 0.3rem;
   width: 2rem;
   height: 2rem;
-  color: #ddd;
+  color: #b6b6b6;
 }
 
 .form button {
@@ -41,5 +41,6 @@
 }
 
 .form button:hover {
-  border-color: #7b8b57;
+  border-color: #bbc99a;
+  background-color: #cbffc9;
 }
