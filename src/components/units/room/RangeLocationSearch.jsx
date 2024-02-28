@@ -7,15 +7,17 @@ import convertGeolocationToAddress from '@/utils/convertGeolocationToAddress';
 function RangeLocationSearch() {
   const radius = useSelector((state) => state.rangeSlice.range);
   const center = useSelector((state) => state.mapSlice.centerPoint);
-  const address = convertGeolocationToAddress(center);
   const [rangeLocationList, setRangeLocationList] = useState([]);
 
   const getRangeLocationList = async () => {
     try {
       if (center === null) return;
       const { lng, lat } = center;
+      const [result] = await convertGeolocationToAddress(center);
+      const address = result.road_address.address_name;
       const resultList = await client.get('', {
         params: {
+          query: address,
           x: lng,
           y: lat,
           radius: radius
@@ -28,7 +30,9 @@ function RangeLocationSearch() {
     }
   };
 
-  getRangeLocationList();
+  useEffect(() => {
+    getRangeLocationList();
+  }, [radius]);
 
   return <></>;
 }
