@@ -1,7 +1,6 @@
 import { client } from '@/apis/keywordSearchListAPI';
 import { useEffect, useState } from 'react';
 import styles from './MapWithSearch.module.css';
-import { useParams } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import persist from '@/utils/persist';
 import * as roomApi from '@/apis/roomApi';
@@ -16,7 +15,6 @@ function MapWithSearch() {
 
   const [searchKeyword, setSearchKeyword] = useState('');
   const [placeList, setPlaceList] = useState([]);
-  const { id: roomId } = useParams();
 
   const patchUserLocation = useCustomMutation(roomApi.updateLocation);
 
@@ -54,7 +52,7 @@ function MapWithSearch() {
   //3초 간격 안에 이벤트가 없으면 view point 전환
   useEffect(() => {
     //handleUpdateLocation
-    const id = setTimeout(handleChangeViewPoint, IDLE_TIME_MS);
+    const id = setTimeout(handleAutoChangeViewPoint, IDLE_TIME_MS);
     return () => {
       clearInterval(id);
     };
@@ -64,10 +62,13 @@ function MapWithSearch() {
     return { name: place.place_name, lat: +place.y, lng: +place.x };
   };
 
-  //viewpoint 변경 (state update)
-  const handleChangeViewPoint = () => {
+  const handleAutoChangeViewPoint = () => {
     if (placeList.length === 0) return;
     const [place] = placeList;
+    handleChangeViewPoint(place);
+  };
+  //viewpoint 변경 (state update)
+  const handleChangeViewPoint = (place) => {
     dispatch(setViewPoint(changeAxiosToViewPoint(place)));
   };
 
