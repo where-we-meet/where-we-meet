@@ -6,7 +6,7 @@ const SignInForm = ({ handleSignIn }) => {
     <form className={styles.form} onSubmit={handleSignIn}>
       <label>
         <PiIdentificationCard />
-        <input type="text" name="nickname" placeholder="아이디" />
+        <input type="text" name="nickname" placeholder="아이디" required />
       </label>
       <label>
         <PiPassword />
