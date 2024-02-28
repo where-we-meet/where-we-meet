@@ -7,14 +7,8 @@ export const useCustomMutation = (axiosApi) => {
       const response = await axiosApi(data);
       return response.data;
     },
-    onSuccess: async (result) => {
-      console.log('1112312312', result);
-      // await queryClient.invalidateQueries({ queryKey: ['room'] });
-      await queryClient.setQueryData(['room'], (old) => {
-        console.log('old=>', old);
-        return { ...old, users: old.users.map((user) => (user.id === result.id ? result : user)) };
-        // return result;
-      });
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['room'] });
     }
   });
 
