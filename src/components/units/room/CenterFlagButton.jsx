@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import style from './CenterFlagButton.module.css';
 import { FaFlag } from 'react-icons/fa';
-import { setViewPoint } from '@/redux/modules/mapSlice';
+import { setViewPoint, setZoomLevel } from '@/redux/modules/mapSlice';
 
 function CenterFlagButton() {
   const dispatch = useDispatch();
@@ -9,7 +9,9 @@ function CenterFlagButton() {
 
   const moveViewPointToCenter = () => {
     dispatch(setViewPoint(center));
+    dispatch(setZoomLevel(3));
   };
+
   return (
     <button className={style.button} onClick={moveViewPointToCenter}>
       <FaFlag className={style.button_icon} />
