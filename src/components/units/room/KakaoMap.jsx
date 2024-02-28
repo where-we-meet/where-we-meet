@@ -5,6 +5,7 @@ import KakaoMapCircle from './KakaoMapCircle';
 import Halfway from './Halfway';
 import styles from './KakaoMap.module.css';
 import { useSelector } from 'react-redux';
+import CenterFlagButton from './CenterFlagButton';
 
 function KakaoMap() {
   const [loading, error] = useKakaoLoader();
@@ -25,7 +26,10 @@ function KakaoMap() {
         }}
       >
         <Halfway />
-        <KakaoMapCircle zoomLevel={zoomLevel} />
+        <div>
+          <KakaoMapCircle zoomLevel={zoomLevel} />
+          <CenterFlagButton />
+        </div>
       </Map>
     </>
   );
