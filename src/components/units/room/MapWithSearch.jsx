@@ -18,6 +18,16 @@ function MapWithSearch() {
 
   const patchUserLocation = useCustomMutation(roomApi.updateLocation);
 
+  const [inputFocused, setInputFocused] = useState(false);
+
+  const handleInputFocus = () => {
+    setInputFocused(true);
+  };
+
+  const handleInputBlur = () => {
+    setInputFocused(false);
+  };
+
   // 검색어 입력 중
   const handleOnKeywordChange = (event) => {
     setSearchKeyword(event.target.value);
@@ -95,15 +105,24 @@ function MapWithSearch() {
     await updateLocation(place);
   };
 
+  const activatePlaceList = placeList.length > 0 && inputFocused && searchKeyword !== '';
   return (
     <>
       <form className={styles.form} onSubmit={handleKeywordSubmit}>
-        <input id="search-form" placeholder="내 위치 등록하기" value={searchKeyword} onChange={handleOnKeywordChange} />
+        <input
+          id="search-form"
+          placeholder="내 위치 등록하기"
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          value={searchKeyword}
+          onChange={handleOnKeywordChange}
+          autoComplete="off"
+        />
         <button type="submit">
           <FaSearch />
         </button>
       </form>
-      {placeList.length > 0 ? (
+      {activatePlaceList ? (
         <div className={styles.places_container}>
           {placeList.map((place) => (
             <div
