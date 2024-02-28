@@ -5,7 +5,7 @@
   border: 2px solid #ddd;
 }
 
-.map-footer{
+.map_footer{
   display: flex;
   flex-direction: row;
   justify-content: space-between;

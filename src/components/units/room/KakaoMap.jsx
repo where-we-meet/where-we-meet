@@ -26,7 +26,7 @@ function KakaoMap() {
         }}
       >
         <Halfway />
-        <div>
+        <div className={styles.map_footer}>
           <KakaoMapCircle zoomLevel={zoomLevel} />
           <CenterFlagButton />
         </div>
