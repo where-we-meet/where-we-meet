@@ -6,10 +6,14 @@ import { FaSearch } from 'react-icons/fa';
 import persist from '@/utils/persist';
 import * as roomApi from '@/apis/roomApi';
 import { useCustomMutation } from '@/hooks/useCustomMutation';
+import { useDispatch } from 'react-redux';
+import { setViewPoint } from '@/redux/modules/mapSlice';
 
 const IDLE_TIME_MS = 3000;
 
-function MapWithSearch({ setViewPoint }) {
+function MapWithSearch() {
+  const dispatch = useDispatch();
+
   const [searchKeyword, setSearchKeyword] = useState('');
   const [placeList, setPlaceList] = useState([]);
   const { id: roomId } = useParams();
@@ -25,7 +29,7 @@ function MapWithSearch({ setViewPoint }) {
   const handleKeywordSubmit = async (event) => {
     event.preventDefault();
     const [place] = placeList;
-    setViewPoint(changeAxiosToViewPoint(place));
+    dispatch(setViewPoint(changeAxiosToViewPoint(place)));
   };
 
   //검색어 바뀔 때마다 결과 리스트 받아오기
@@ -64,7 +68,7 @@ function MapWithSearch({ setViewPoint }) {
   const handleChangeViewPoint = () => {
     if (placeList.length === 0) return;
     const [place] = placeList;
-    setViewPoint(changeAxiosToViewPoint(place));
+    dispatch(setViewPoint(changeAxiosToViewPoint(place)));
   };
 
   const updateLocation = async (place) => {

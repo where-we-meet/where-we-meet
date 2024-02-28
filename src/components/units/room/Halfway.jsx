@@ -6,8 +6,12 @@ import convexHull from '@/utils/convexHull';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRoomQuery } from '@/hooks/useRoomQuery';
+import { useDispatch } from 'react-redux';
+import { setCenterPoint } from '@/redux/modules/mapSlice';
 
 const Halfway = () => {
+  const dispatch = useDispatch();
+
   const { id } = useParams();
   const {
     data: { users },
@@ -23,6 +27,10 @@ const Halfway = () => {
   useEffect(() => {
     setUsersData(users);
   }, [users]);
+
+  useEffect(() => {
+    dispatch(setCenterPoint(halfwayPoint));
+  }, [halfwayPoint]);
 
   if (isLoading) return <>Loading..</>;
   return (

@@ -4,6 +4,12 @@ export default function calcCenterPoint(points) {
   let s = 0;
 
   if (points === undefined) return;
+  
+  if (points.length === 1) {
+    const lat = points[0].location.lat;
+    const lng = points[0].location.lng;
+    return { lat, lng };
+  }
 
   if (points.length === 2) {
     const lat = (points[0].location.lat + points[1].location.lat) / 2;
