@@ -5,7 +5,6 @@ export const useRoomQuery = (roomId) => {
   const { data, isLoading } = useQuery({
     queryKey: ['room'],
     queryFn: async () => {
-      console.log('sdfsdfsdfsd');
       return await roomApi.getRoomData(roomId);
     }
   });
