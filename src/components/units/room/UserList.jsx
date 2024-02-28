@@ -6,7 +6,7 @@ function UserList({ users }) {
   const dispatch = useDispatch();
 
   const handleViewPoint = (location) => {
-    if (!location) return;
+    if (!location) return alert('해당 유저가 위치를 선택하지 않았습니다.');
 
     dispatch(setViewPoint({ lat: location.lat, lng: location.lng }));
   };
