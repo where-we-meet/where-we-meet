@@ -1,3 +1,20 @@
 .button{
-  
+  height: 50px;
+  width : 110px;
+  border : none;
+  background-color: transparent;
+  color: #808575;
+  padding : 16px 0px;
+}
+.button:hover{
+  color: #618c0a;
+}
+.button_icon{
+  transform: scale(1.8);
+}
+
+.button_text{
+  padding-top : 5px;
+  font-size: 10px;
+  font-weight: 300;
 }
