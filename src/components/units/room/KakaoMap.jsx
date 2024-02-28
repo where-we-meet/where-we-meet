@@ -50,7 +50,7 @@ function KakaoMap() {
         </div>
         <div>
           {rangeLocationList.map((spot) => (
-            <div>
+            <div key={spot.id}>
               <h3>{spot.place_name}</h3>
               <p>{spot.category_group_name}</p>
               <p>주소: {spot.road_address_name}</p>
