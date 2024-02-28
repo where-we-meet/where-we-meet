@@ -1,4 +1,5 @@
 .form {
+  position: relative;
   display: flex;
   overflow: hidden;
 }
@@ -23,6 +24,7 @@
 
 .form > button {
   position: absolute;
+  top: 0.2rem;
   right: 0.3rem;
   padding: 0.7rem;
   border: none;
@@ -30,9 +32,9 @@
 }
 
 .form svg {
-  color: #b6b6b6;
   width: 1.2rem;
   height: 1.2rem;
+  color: #b6b6b6;
 }
 
 .form svg:hover {
@@ -43,15 +45,15 @@
   position: absolute;
   top: 45px;
   max-width: 350px;
-  width: 100%;
   max-height: 500px;
-  z-index: 9999;
-  overflow: hidden;
-  overflow-y: overlay;
-  cursor: pointer;
+  width: 100%;
   border: 2px solid #a4a4a4;
   border-radius: 6px;
   background-color: rgb(240, 247, 244);
+  overflow: hidden;
+  overflow-y: overlay;
+  cursor: pointer;
+  z-index: 9999;
 }
 
 .places_container::-webkit-scrollbar {
@@ -88,7 +90,7 @@
 
 .category_group_name {
   color: gray;
-  font-size: 14px;
+  font-size: 90%;
   display: block;
 }
 
