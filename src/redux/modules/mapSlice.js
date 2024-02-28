@@ -14,7 +14,6 @@ const mapSlice = createSlice({
       state.viewPoint = action.payload;
     },
     setCenterPoint: (state, action) => {
-      if (action.payload === undefined) return;
       state.centerPoint = action.payload;
     },
     setZoomLevel: (state, action) => {
