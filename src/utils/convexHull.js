@@ -7,7 +7,7 @@ function ccw(a, b, c) {
 
 export default function convexHull(points) {
   // 가장 아래에 있는 점을 찾음
-  if (points.length === 0) return;
+  if (points.length <= 1) return;
 
   const lowestPoint = points.reduce((lowest, { location: point }) => {
     return point.lng < lowest.lng ? point : lowest;

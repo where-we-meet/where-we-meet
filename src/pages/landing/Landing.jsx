@@ -7,6 +7,7 @@ import { useState } from 'react';
 function Landing() {
   const navigate = useNavigate();
   const [easterEgg, setEasterEgg] = useState(0);
+  sessionStorage.clear();
 
   const handleCreateRoom = async (e) => {
     e.preventDefault();
