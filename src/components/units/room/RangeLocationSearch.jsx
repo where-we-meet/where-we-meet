@@ -38,9 +38,8 @@ function RangeLocationSearch() {
   return (
     <div>
       {rangeLocationList.map((spot) => (
-        <>
+        <div key={spot.id}>
           <MapMarker
-            key={spot.id}
             position={{ lng: spot.x, lat: spot.y }}
             image={{
               src: pin,
@@ -65,7 +64,7 @@ function RangeLocationSearch() {
               </div>
             )}
           </MapMarker>
-        </>
+        </div>
       ))}
     </div>
   );
