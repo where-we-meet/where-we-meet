@@ -4,10 +4,13 @@ import { Map } from 'react-kakao-maps-sdk';
 import KakaoMapCircle from './KakaoMapCircle';
 import Halfway from './Halfway';
 import styles from './KakaoMap.module.css';
+import { useSelector } from 'react-redux';
 
-function KakaoMap({ viewPoint }) {
+function KakaoMap() {
   const [loading, error] = useKakaoLoader();
   const [zoomLevel, setZoomLevel] = useState(3);
+
+  const viewPoint = useSelector((state) => state.mapSlice.viewPoint);
 
   if (loading) return <div>Loading</div>;
 
@@ -22,7 +25,7 @@ function KakaoMap({ viewPoint }) {
         }}
       >
         <Halfway />
-        <KakaoMapCircle center={viewPoint} zoomLevel={zoomLevel} />
+        <KakaoMapCircle zoomLevel={zoomLevel} />
       </Map>
     </>
   );
