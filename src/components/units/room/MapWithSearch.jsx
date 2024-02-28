@@ -18,14 +18,25 @@ function MapWithSearch() {
 
   const patchUserLocation = useCustomMutation(roomApi.updateLocation);
 
-  const [inputFocused, setInputFocused] = useState(false);
+  const [interactionState, setInteractionState] = useState({
+    inputFocused: false,
+    containerHovered: false
+  });
 
   const handleInputFocus = () => {
-    setInputFocused(true);
+    setInteractionState({ ...interactionState, inputFocused: true });
   };
 
   const handleInputBlur = () => {
-    setInputFocused(false);
+    setInteractionState({ ...interactionState, inputFocused: false });
+  };
+
+  const handleContainerMouseEnter = () => {
+    setInteractionState({ ...interactionState, containerHovered: true });
+  };
+
+  const handleContainerMouseLeave = () => {
+    setInteractionState({ ...interactionState, containerHovered: false });
   };
 
   // 검색어 입력 중
@@ -105,7 +116,8 @@ function MapWithSearch() {
     await updateLocation(place);
   };
 
-  const activatePlaceList = placeList.length > 0 && inputFocused && searchKeyword !== '';
+  const activatePlaceList =
+    placeList.length > 0 && interactionState.inputFocused && interactionState.containerHovered && searchKeyword !== '';
   return (
     <>
       <form className={styles.form} onSubmit={handleKeywordSubmit}>
@@ -123,7 +135,11 @@ function MapWithSearch() {
         </button>
       </form>
       {activatePlaceList ? (
-        <div className={styles.places_container}>
+        <div
+          className={styles.places_container}
+          onMouseEnter={handleContainerMouseEnter}
+          onMouseLeave={handleContainerMouseLeave}
+        >
           {placeList.map((place) => (
             <div
               key={place.id}
