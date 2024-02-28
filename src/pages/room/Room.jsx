@@ -17,7 +17,6 @@ function Room() {
   const mutateNewUser = useCustomMutation(roomApi.createUser);
 
   const [currentUser, setCurrentUser] = useState(persist.get('userInfo'));
-  const [viewPoint, setViewPoint] = useState({ lat: 33.450701, lng: 126.570667 });
 
   const isLoggedIn = !!currentUser;
 
@@ -62,7 +61,7 @@ function Room() {
         </Link>
       </header>
       <section className={styles.search}>
-        <MapWithSearch setViewPoint={setViewPoint} />
+        <MapWithSearch />
       </section>
       <section className={styles.left}>
         {isLoggedIn ? (
@@ -76,7 +75,7 @@ function Room() {
         <UserList users={data.users} />
       </section>
       <section className={styles.right}>
-        <KakaoMap viewPoint={viewPoint} />
+        <KakaoMap />
       </section>
     </div>
   );
