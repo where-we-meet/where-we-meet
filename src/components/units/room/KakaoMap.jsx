@@ -23,6 +23,13 @@ function KakaoMap() {
     dispatch(setViewPoint(currentLatLng));
   };
 
+  const handleZoomChanged = (map) => {
+    const level = map.getLevel();
+    dispatch(setZoomLevel(level));
+
+    handleViewPoint(map);
+  };
+
   if (loading) return <div>Loading</div>;
   if (error) return <div>error</div>;
 
@@ -32,15 +39,8 @@ function KakaoMap() {
         center={viewPoint}
         className={styles.map}
         level={zoomLevel}
-        onZoomChanged={(map) => {
-          const level = map.getLevel();
-          dispatch(setZoomLevel(level));
-
-          handleViewPoint(map);
-        }}
-        onDragEnd={(map) => {
-          handleViewPoint(map);
-        }}
+        onZoomChanged={handleZoomChanged}
+        onDragEnd={(map) => handleViewPoint(map)}
       >
         <RangeLocationSearch rangeLocationList={rangeLocationList} setRangeLocationList={setRangeLocationList} />
         <Halfway />

@@ -26,13 +26,13 @@ const Halfway = () => {
 
   useEffect(() => {
     setUsersData(users);
-  }, [users]);
-
-  useEffect(() => {
-    dispatch(setCenterPoint(halfwayPoint));
-  }, [halfwayPoint]);
+    if (hasLocationUsers.length >= 2) {
+      dispatch(setCenterPoint(halfwayPoint));
+    }
+  }, [users, halfwayPoint]);
 
   if (isLoading) return <>Loading..</>;
+
   return (
     <>
       {hasLocationUsers.map((user) => {
