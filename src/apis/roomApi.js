@@ -9,7 +9,7 @@ roomApi.interceptors.request.use(
     return config;
   },
   function (error) {
-    console.log(error);
+    console.error(error);
     return Promise.reject(error);
   }
 );
@@ -19,7 +19,7 @@ roomApi.interceptors.response.use(
     return response;
   },
   function (error) {
-    console.log(error);
+    console.error(error);
     return Promise.reject(error);
   }
 );
