@@ -1,7 +1,6 @@
 import { client } from '@/apis/keywordSearchListAPI';
 import { useEffect, useState } from 'react';
 import styles from './MapWithSearch.module.css';
-import { useParams } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import persist from '@/utils/persist';
 import * as roomApi from '@/apis/roomApi';
@@ -16,9 +15,29 @@ function MapWithSearch() {
 
   const [searchKeyword, setSearchKeyword] = useState('');
   const [placeList, setPlaceList] = useState([]);
-  const { id: roomId } = useParams();
 
   const patchUserLocation = useCustomMutation(roomApi.updateLocation);
+
+  const [interactionState, setInteractionState] = useState({
+    inputFocused: false,
+    containerHovered: false
+  });
+
+  const handleInputFocus = () => {
+    setInteractionState({ ...interactionState, inputFocused: true });
+  };
+
+  const handleInputBlur = () => {
+    setInteractionState({ ...interactionState, inputFocused: false });
+  };
+
+  const handleContainerMouseEnter = () => {
+    setInteractionState({ ...interactionState, containerHovered: true });
+  };
+
+  const handleContainerMouseLeave = () => {
+    setInteractionState({ ...interactionState, containerHovered: false });
+  };
 
   // 검색어 입력 중
   const handleOnKeywordChange = (event) => {
@@ -54,7 +73,7 @@ function MapWithSearch() {
   //3초 간격 안에 이벤트가 없으면 view point 전환
   useEffect(() => {
     //handleUpdateLocation
-    const id = setTimeout(handleChangeViewPoint, IDLE_TIME_MS);
+    const id = setTimeout(handleAutoChangeViewPoint, IDLE_TIME_MS);
     return () => {
       clearInterval(id);
     };
@@ -64,10 +83,13 @@ function MapWithSearch() {
     return { name: place.place_name, lat: +place.y, lng: +place.x };
   };
 
-  //viewpoint 변경 (state update)
-  const handleChangeViewPoint = () => {
+  const handleAutoChangeViewPoint = () => {
     if (placeList.length === 0) return;
     const [place] = placeList;
+    handleChangeViewPoint(place);
+  };
+  //viewpoint 변경 (state update)
+  const handleChangeViewPoint = (place) => {
     dispatch(setViewPoint(changeAxiosToViewPoint(place)));
   };
 
@@ -94,18 +116,39 @@ function MapWithSearch() {
     await updateLocation(place);
   };
 
+  const activatePlaceList =
+    (placeList.length > 0 && interactionState.inputFocused && searchKeyword !== '') ||
+    interactionState.containerHovered;
   return (
     <>
       <form className={styles.form} onSubmit={handleKeywordSubmit}>
-        <input id="search-form" placeholder="내 위치 등록하기" value={searchKeyword} onChange={handleOnKeywordChange} />
+        <input
+          id="search-form"
+          placeholder="내 위치 등록하기"
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          value={searchKeyword}
+          onChange={handleOnKeywordChange}
+          autoComplete="off"
+        />
         <button type="submit">
           <FaSearch />
         </button>
       </form>
-      {placeList.length > 0 ? (
-        <div className={styles.places_container}>
+      {activatePlaceList ? (
+        <div
+          className={styles.places_container}
+          onMouseEnter={handleContainerMouseEnter}
+          onMouseLeave={handleContainerMouseLeave}
+        >
           {placeList.map((place) => (
-            <div key={place.id} className={styles.place_info_container}>
+            <div
+              key={place.id}
+              className={styles.place_info_container}
+              onClick={() => {
+                handleChangeViewPoint(place);
+              }}
+            >
               <p className={styles.place_name}>{place.place_name}</p>
               <p className={styles.road_address_name}>{place.road_address_name}</p>
               <p className={styles.category_group_name}>{place.category_group_name}</p>
