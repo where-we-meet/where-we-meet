@@ -18,7 +18,8 @@
   outline: none;
 }
 
-.form input:hover {
+.form input:hover,
+.form input:focus {
   border-color: #a4a4a4;
 }
 
@@ -37,13 +38,11 @@
   border: 2px solid #ddd;
   border-radius: 7px;
   font-size: 100%;
-  font-weight: bold;
   color: #b6b6b6;
 }
 
 .form button:hover {
   border-color: #a4a4a4;
-  background-color: #d9e2f6;
   color: rgb(36, 41, 36);
 }
 

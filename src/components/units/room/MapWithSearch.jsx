@@ -141,26 +141,27 @@ function MapWithSearch() {
           onMouseEnter={handleContainerMouseEnter}
           onMouseLeave={handleContainerMouseLeave}
         >
-          {placeList.map((place) => (
-            <div
-              key={place.id}
-              className={styles.place_info_container}
-              onClick={() => {
-                handleChangeViewPoint(place);
-              }}
-            >
-              <p className={styles.place_name}>{place.place_name}</p>
-              <p className={styles.road_address_name}>{place.road_address_name}</p>
-              <p className={styles.category_group_name}>{place.category_group_name}</p>
-              <button
+          <ul>
+            {placeList.map((place) => (
+              <li
+                key={place.id}
                 onClick={() => {
-                  handleSetMyLocation(place);
+                  handleChangeViewPoint(place);
                 }}
               >
-                이 위치로 지정
-              </button>
-            </div>
-          ))}
+                <p className={styles.place_name}>{place.place_name}</p>
+                <p className={styles.road_address_name}>{place.road_address_name}</p>
+                <p className={styles.category_group_name}>{place.category_group_name}</p>
+                <button
+                  onClick={() => {
+                    handleSetMyLocation(place);
+                  }}
+                >
+                  이 위치로 지정
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       ) : null}
     </>
