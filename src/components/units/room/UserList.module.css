@@ -16,10 +16,18 @@
 }
 
 .users > li:hover {
-  background: #f1f1f1;
+  /* background: #f1f1f1; */
+  background-color: #c4fdc1;
+}
+
+.users > li > strong {
+  position: relative;
+  left: 4%;
 }
 
 .users > li > p {
+  position: relative;
+  left: 3%;
   font-size: 90%;
   color: #666;
 }
