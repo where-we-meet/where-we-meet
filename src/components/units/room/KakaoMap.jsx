@@ -6,6 +6,7 @@ import styles from './KakaoMap.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import CenterFlagButton from './CenterFlagButton';
 import { setViewPoint, setZoomLevel } from '@/redux/modules/mapSlice';
+import RangeLocationSearch from './RangeLocationSearch';
 
 function KakaoMap() {
   const [loading, error] = useKakaoLoader();
@@ -39,6 +40,7 @@ function KakaoMap() {
           handleViewPoint(map);
         }}
       >
+        <RangeLocationSearch />
         <Halfway />
         <div className={styles.map_footer}>
           <KakaoMapCircle zoomLevel={zoomLevel} />
