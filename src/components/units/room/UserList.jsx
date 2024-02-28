@@ -16,7 +16,8 @@ function UserList({ users }) {
       {users.map((user) => {
         return (
           <li onClick={() => handleViewPoint(user.location)} key={user.id}>
-            {user.nickname}
+            <strong>{user.nickname}</strong>
+            <p>{user.location?.name}</p>
           </li>
         );
       })}

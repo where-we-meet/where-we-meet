@@ -6,7 +6,20 @@
 }
 
 .users > li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   background: #f6f8fa;
   border-radius: 6px;
   padding: 1rem;
+  cursor: pointer;
+}
+
+.users > li:hover {
+  background: #f1f1f1;
+}
+
+.users > li > p {
+  font-size: 90%;
+  color: #666;
 }
