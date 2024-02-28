@@ -18,5 +18,5 @@ const mapSlice = createSlice({
   }
 });
 
-export const { selectMember } = mapSlice.actions;
+export const { setViewPoint, setCenterPoint } = mapSlice.actions;
 export default mapSlice.reducer;
