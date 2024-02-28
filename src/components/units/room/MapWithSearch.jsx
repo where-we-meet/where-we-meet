@@ -117,7 +117,8 @@ function MapWithSearch() {
   };
 
   const activatePlaceList =
-    placeList.length > 0 && interactionState.inputFocused && interactionState.containerHovered && searchKeyword !== '';
+    (placeList.length > 0 && interactionState.inputFocused && searchKeyword !== '') ||
+    interactionState.containerHovered;
   return (
     <>
       <form className={styles.form} onSubmit={handleKeywordSubmit}>
