@@ -1,18 +1,30 @@
+@import url('https://font.elice.io/css?family=Elice+DX+Neolli');
+
+@font-face {
+  font-family: 'AppleSDGothicNeo';
+  font-weight: 400;
+  src: url(../public/fonts/AppleSDGothicNeoR.ttf) format('woff2');
+}
+
 * {
   box-sizing: border-box;
+  font-family: 'AppleSDGothicNeo';
 }
 
 #root {
   display: flex;
   flex-direction: column;
   min-height: 99vh;
+  background-color: #fdfdfb;
 }
 
 button {
   color: inherit;
+  background-color: #fcfcfc;
   cursor: pointer;
 }
 
 input {
   font-size: 100%;
+  background-color: #fcfcfc;
 }

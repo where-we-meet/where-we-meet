@@ -1,8 +1,6 @@
 .form {
   position: relative;
   display: flex;
-  border: 2px solid #ddd;
-  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -11,6 +9,12 @@
   padding: 0.7rem;
   border: none;
   outline: none;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+}
+
+.form > input:focus {
+  border-color: #7b8b57;
 }
 
 .form > button {
@@ -37,10 +41,11 @@
 }
 
 .place_info_container {
-  width: 400px;
+  width: 300px;
   padding: 10px;
   border: 1px solid black;
-  background-color: aliceblue;
+  border-radius: 6px;
+  background-color: rgb(240, 247, 244);
   line-height: 3px;
   overflow: hidden;
   display: flex;

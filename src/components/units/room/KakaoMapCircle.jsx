@@ -13,6 +13,8 @@ function KakaoMapCircle({ zoomLevel }) {
     setRadius(e.target.value);
   };
 
+  if (center === null) return;
+
   return (
     <>
       <Circle
