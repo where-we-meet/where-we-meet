@@ -1,20 +1,24 @@
-.button{
+.button {
+  margin-left: auto;
   height: 50px;
-  width : 110px;
-  border : none;
+  width: 80px;
+  border: none;
   background-color: transparent;
   color: #808575;
-  padding : 16px 0px;
-}
-.button:hover{
-  color: #618c0a;
-}
-.button_icon{
-  transform: scale(1.8);
+  padding: 1rem 0px;
 }
 
-.button_text{
-  padding-top : 5px;
-  font-size: 10px;
+.button:hover {
+  color: #618c0a;
+}
+
+.button_icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.button_text {
+  padding-top: 0.3rem;
+  font-size: 80%;
   font-weight: 300;
 }
