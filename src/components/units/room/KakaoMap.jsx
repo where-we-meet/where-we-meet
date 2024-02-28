@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CenterFlagButton from './CenterFlagButton';
 import { setViewPoint, setZoomLevel } from '@/redux/modules/mapSlice';
 import RangeLocationSearch from './RangeLocationSearch';
+import { useState } from 'react';
 
 function KakaoMap() {
   const [loading, error] = useKakaoLoader();
@@ -14,6 +15,7 @@ function KakaoMap() {
 
   const zoomLevel = useSelector((state) => state.mapSlice.zoomLevel);
   const viewPoint = useSelector((state) => state.mapSlice.viewPoint);
+  const [rangeLocationList, setRangeLocationList] = useState([]);
 
   const handleViewPoint = (map) => {
     const latlng = map.getCenter();
@@ -40,7 +42,7 @@ function KakaoMap() {
           handleViewPoint(map);
         }}
       >
-        <RangeLocationSearch />
+        <RangeLocationSearch rangeLocationList={rangeLocationList} setRangeLocationList={setRangeLocationList} />
         <Halfway />
         <div className={styles.map_footer}>
           <KakaoMapCircle zoomLevel={zoomLevel} />
