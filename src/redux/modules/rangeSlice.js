@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  range: 50
+  range: 50,
+  locationList: []
 };
 
 const rangeSlice = createSlice({
@@ -10,9 +11,12 @@ const rangeSlice = createSlice({
   reducers: {
     setRange: (state, action) => {
       state.range = action.payload;
+    },
+    setLocationList: (state, action) => {
+      state.locationList = action.payload;
     }
   }
 });
 
-export const { setRange } = rangeSlice.actions;
+export const { setRange, setLocationList } = rangeSlice.actions;
 export default rangeSlice.reducer;
