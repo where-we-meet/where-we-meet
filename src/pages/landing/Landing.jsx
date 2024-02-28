@@ -27,7 +27,7 @@ function Landing() {
       </h1>
       <form className={`${styles.form} ${easterEgg === 5 ? styles.easter_egg : ''}`} onSubmit={handleCreateRoom}>
         <input type="text" name="roomName" placeholder="모임 이름"></input>
-        <button type="button" title="모임 생성">
+        <button type="submit" title="모임 생성">
           <FiPlusCircle />
         </button>
       </form>
