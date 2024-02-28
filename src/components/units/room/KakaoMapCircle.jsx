@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 const RADIUS_MAXRANGE = [50, 100, 250, 400, 700, 2000, 5000, 8000, 10000];
 
 function KakaoMapCircle({ zoomLevel }) {
-  const [radius, setRadius] = useState(0);
+  const [radius, setRadius] = useState(50);
   const center = useSelector((state) => state.mapSlice.centerPoint);
 
   const handleChangeRange = (e) => {
