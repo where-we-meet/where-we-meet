@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  range: 0
+  range: 50
 };
 
 const rangeSlice = createSlice({
