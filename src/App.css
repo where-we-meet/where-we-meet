@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'AppleSDGothicNeo';
   font-weight: 400;
-  src: url(../public/fonts/AppleSDGothicNeoR.ttf) format('woff2');
+  src: url(/fonts/AppleSDGothicNeoR.ttf) format('woff2');
 }
 
 * {
