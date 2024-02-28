@@ -7,8 +7,10 @@
 
 .users > li {
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 0.5rem;
+  min-height: 75px;
   background: #f6f8fa;
   border: 2px solid transparent;
   border-radius: 6px;
@@ -21,10 +23,15 @@
   background-color: #d9e2f6;
 }
 
-.users > li > strong {
-}
-
 .users > li > p {
   font-size: 90%;
   color: #666;
+}
+
+.users svg {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
 }
