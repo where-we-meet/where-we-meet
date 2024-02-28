@@ -106,7 +106,13 @@ function MapWithSearch() {
       {placeList.length > 0 ? (
         <div className={styles.places_container}>
           {placeList.map((place) => (
-            <div key={place.id} className={styles.place_info_container}>
+            <div
+              key={place.id}
+              className={styles.place_info_container}
+              onClick={() => {
+                handleChangeViewPoint(place);
+              }}
+            >
               <p className={styles.place_name}>{place.place_name}</p>
               <p className={styles.road_address_name}>{place.road_address_name}</p>
               <p className={styles.category_group_name}>{place.category_group_name}</p>
