@@ -1,18 +1,22 @@
-import { useState } from 'react';
 import { Circle } from 'react-kakao-maps-sdk';
 import styles from './KakaoMapCircle.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRange } from '@/redux/modules/rangeSlice';
 
 const RADIUS_MAXRANGE = [50, 100, 250, 400, 700, 2000, 5000, 8000, 10000];
 
 function KakaoMapCircle({ zoomLevel }) {
-  const [radius, setRadius] = useState(50);
+  const dispatch = useDispatch();
+  const radius = useSelector((state) => state.rangeSlice.range);
   const center = useSelector((state) => state.mapSlice.centerPoint);
 
   const handleChangeRange = (e) => {
-    setRadius(e.target.value);
+    dispatch(setRange(e.target.value));
   };
 
+  const resetRange = () => {
+    dispatch(setRange(0));
+  };
   if (center === null) return;
 
   return (
@@ -35,7 +39,7 @@ function KakaoMapCircle({ zoomLevel }) {
           value={radius}
           onChange={handleChangeRange}
         ></input>
-        반경 {radius}m<button onClick={() => setRadius(0)}>범위 지우기!</button>
+        반경 {radius}m<button onClick={resetRange}>범위 지우기!</button>
       </div>
     </>
   );
