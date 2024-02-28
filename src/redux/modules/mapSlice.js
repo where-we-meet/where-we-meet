@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  viewPoint: { lat: 33.450701, lng: 126.570667 },
-  centerPoint: { lat: 33.450701, lng: 126.570667 }
+  viewPoint: { lat: 37.50232593365278, lng: 127.04444559870342 },
+  centerPoint: null
 };
 
 const mapSlice = createSlice({
