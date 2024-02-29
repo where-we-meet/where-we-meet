@@ -41,13 +41,11 @@ function MapWithSearch() {
     setInteractionState({ ...interactionState, containerHovered: false });
   };
 
-  // 검색어 입력 중
   const handleOnKeywordChange = (event) => {
     event.stopPropagation();
     setSearchKeyword(event.target.value);
   };
 
-  //검색어 입력 완료 후
   const handleKeywordSubmit = async (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -55,7 +53,6 @@ function MapWithSearch() {
     dispatch(setViewPoint(changeAxiosToViewPoint(place)));
   };
 
-  //검색어 바뀔 때마다 결과 리스트 받아오기
   useEffect(() => {
     const getSearchResult = async () => {
       try {
@@ -74,9 +71,7 @@ function MapWithSearch() {
     getSearchResult();
   }, [searchKeyword]);
 
-  //3초 간격 안에 이벤트가 없으면 view point 전환
   useEffect(() => {
-    //handleUpdateLocation
     const id = setTimeout(handleAutoChangeViewPoint, IDLE_TIME_MS);
     return () => {
       clearInterval(id);
@@ -92,22 +87,19 @@ function MapWithSearch() {
     const [place] = placeList;
     handleChangeViewPoint(place);
   };
-  //viewpoint 변경 (state update)
+
   const handleChangeViewPoint = (place) => {
     dispatch(setViewPoint(changeAxiosToViewPoint(place)));
   };
 
   const updateLocation = async (place) => {
-    // 사용자 정보 확인
     const userInfo = persist.get('userInfo');
 
-    // 사용자 정보가 없는 경우 알림 후 종료
     if (!userInfo) {
       alert('로그인 후 이용해주세요.');
       return;
     }
 
-    // 사용자 정보 업데이트
     const updatedUserInfo = {
       ...userInfo,
       location: changeAxiosToViewPoint(place)

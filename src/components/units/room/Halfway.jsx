@@ -8,15 +8,6 @@ import { useDispatch } from 'react-redux';
 import { setCenterPoint } from '@/redux/modules/mapSlice';
 import flag from '@assets/icons/flag.svg';
 import { pins } from '@/utils/selectUserPins';
-// import pin1 from '@assets/icons/pin1.svg';
-// import pin2 from '@assets/icons/pin2.svg';
-// import pin3 from '@assets/icons/pin3.svg';
-// import pin4 from '@assets/icons/pin4.svg';
-// import pin5 from '@assets/icons/pin5.svg';
-// import pin6 from '@assets/icons/pin6.svg';
-// import pin7 from '@assets/icons/pin7.svg';
-
-// const pins = [pin1, pin2, pin3, pin4, pin5, pin6, pin7];
 
 const Halfway = () => {
   const dispatch = useDispatch();
