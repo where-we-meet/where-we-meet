@@ -41,9 +41,10 @@ function RangeLocationSearch() {
     getRangeLocationList();
   }, [radius]);
 
-  const handleClickResult = (x, y) => {
-    dispatch(setViewPoint({ lat: y, lng: x }));
+  const handleClickResult = (spot) => {
+    dispatch(setViewPoint({ lat: spot.y, lng: spot.x }));
     dispatch(setZoomLevel(1));
+    showSpotInfo(spot);
   };
 
   return (
@@ -86,11 +87,7 @@ function RangeLocationSearch() {
           </h2>
           <ul className={styles.spots_container}>
             {rangeLocationList.map((spot) => (
-              <li
-                key={spot.id}
-                className={styles.spot_info_container}
-                onClick={() => handleClickResult(spot.x, spot.y)}
-              >
+              <li key={spot.id} className={styles.spot_info_container} onClick={() => handleClickResult(spot)}>
                 <h3>{spot.place_name}</h3>
                 <p>{spot.category_group_name}</p>
                 <p>주소: {spot.road_address_name}</p>
