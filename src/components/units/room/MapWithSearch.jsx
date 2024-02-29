@@ -31,22 +31,26 @@ function MapWithSearch() {
     setInteractionState({ ...interactionState, inputFocused: false });
   };
 
-  const handleContainerMouseEnter = () => {
+  const handleContainerMouseEnter = (event) => {
+    event.stopPropagation();
     setInteractionState({ ...interactionState, containerHovered: true });
   };
 
-  const handleContainerMouseLeave = () => {
+  const handleContainerMouseLeave = (event) => {
+    event.stopPropagation();
     setInteractionState({ ...interactionState, containerHovered: false });
   };
 
   // 검색어 입력 중
   const handleOnKeywordChange = (event) => {
+    event.stopPropagation();
     setSearchKeyword(event.target.value);
   };
 
   //검색어 입력 완료 후
   const handleKeywordSubmit = async (event) => {
     event.preventDefault();
+    event.stopPropagation();
     const [place] = placeList;
     dispatch(setViewPoint(changeAxiosToViewPoint(place)));
   };
