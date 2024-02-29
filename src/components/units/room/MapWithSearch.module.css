@@ -10,7 +10,7 @@
   border: none;
   outline: none;
   border: 2px solid #ddd;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .form > input:hover {
@@ -48,22 +48,12 @@
   max-height: 500px;
   width: 100%;
   border: 2px solid #a4a4a4;
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: rgb(240, 247, 244);
   overflow: hidden;
   overflow-y: overlay;
   cursor: pointer;
   z-index: 9999;
-}
-
-.places_container::-webkit-scrollbar {
-  width: 7px;
-  background-color: transparent;
-}
-
-.places_container::-webkit-scrollbar-thumb {
-  background-color: #ddd;
-  border-radius: 6px;
 }
 
 .places_container > ul {
@@ -96,6 +86,6 @@
 
 .places_container button {
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 0.5rem;
 }
