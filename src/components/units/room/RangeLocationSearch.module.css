@@ -1,16 +1,16 @@
-.spot_info{
-  width : 200px;
-  padding : 10px;
- 
+.spot_info {
+  width: 200px;
+  padding: 10px;
+
   opacity: 0.7;
 }
 
 .spot_info h3 {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 20px;
 }
 
 .spot_info p {
-  font-size: 12px;
+  font-size: 75%;
   line-height: 20px;
 }
