@@ -1,0 +1,53 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.form label {
+  position: relative;
+  width: 100%;
+}
+
+.form input {
+  padding: 0.7rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding-left: 3rem;
+  width: 100%;
+  outline: none;
+}
+
+.form input:hover,
+.form input:focus {
+  border-color: #a4a4a4;
+}
+
+.form label svg {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.4rem;
+  width: 2rem;
+  height: 2rem;
+  color: #b6b6b6;
+}
+
+.form button {
+  position: relative;
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 100%;
+  color: #b6b6b6;
+}
+
+.form button:hover {
+  border-color: #a4a4a4;
+  color: rgb(36, 41, 36);
+}
+
+.form button svg {
+  position: relative;
+  top: 0.13rem;
+  margin-right: 0.3rem;
+}

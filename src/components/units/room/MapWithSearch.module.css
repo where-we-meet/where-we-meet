@@ -1,0 +1,91 @@
+.form {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+.form > input {
+  flex: 1;
+  padding: 0.7rem;
+  border: none;
+  outline: none;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+}
+
+.form > input:hover {
+  background-color: #ecf2ff;
+}
+
+.form > input:focus {
+  border-color: #a4a4a4;
+  background-color: #d9e2f6;
+}
+
+.form > button {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.3rem;
+  padding: 0.7rem;
+  border: none;
+  background-color: transparent;
+}
+
+.form svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #b6b6b6;
+}
+
+.form svg:hover {
+  color: #a4a4a4;
+}
+
+.places_container {
+  position: absolute;
+  top: 45px;
+  max-width: 350px;
+  max-height: 500px;
+  width: 100%;
+  border: 2px solid #a4a4a4;
+  border-radius: 8px;
+  background-color: rgb(240, 247, 244);
+  overflow: hidden;
+  overflow-y: overlay;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.places_container > ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.places_container > ul > li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+
+.place_name {
+  font-weight: bold;
+}
+
+.road_address_name {
+  font-size: 90%;
+}
+
+.category_group_name {
+  color: gray;
+  font-size: 90%;
+  display: block;
+}
+
+.places_container button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+}

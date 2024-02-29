@@ -1,0 +1,12 @@
+.map {
+  width: 100%;
+  aspect-ratio: 2;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+.map_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

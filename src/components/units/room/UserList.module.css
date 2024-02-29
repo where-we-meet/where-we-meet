@@ -1,0 +1,37 @@
+.users {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.users > li {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 75px;
+  background: #f6f8fa;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+}
+
+.users > li:hover {
+  border-color: #ddd;
+  background-color: #d9e2f6;
+}
+
+.users > li > p {
+  font-size: 90%;
+  color: #666;
+}
+
+.users svg {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+}

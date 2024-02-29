@@ -1,0 +1,97 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  flex: 1;
+  padding: 0 1.5rem;
+}
+
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateColor {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.title {
+  font-family: 'Elice DX Neolli', sans-serif;
+  font-weight: bold;
+  font-size: 5rem;
+  color: #7b8b57;
+  text-align: center;
+  user-select: none;
+}
+
+.title > button {
+  font-weight: bold;
+  color: inherit;
+  font-size: 5rem;
+  border: none;
+  background-color: transparent;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  max-width: 500px;
+  width: 100%;
+  align-items: center;
+  overflow: hidden;
+  border: 3px solid #ddd;
+  border-radius: 1rem;
+  animation: fadeInDown 1.5s ease-out;
+  border-color: #7b8b57;
+  color: #7b8b57;
+}
+
+.form > input {
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 1rem;
+  outline: none;
+  border: none;
+}
+
+.easter_egg {
+  animation: rotateColor 5s linear infinite;
+  border-color: #3498db !important;
+  color: #3498db;
+}
+
+.form > input::placeholder {
+  color: #ddd;
+}
+
+.form > button {
+  position: absolute;
+  right: 0.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.form svg {
+  width: 2rem;
+  height: 2rem;
+  margin: 0.5rem;
+  color: inherit;
+}
+
+.form svg:hover {
+  color: #333;
+}
