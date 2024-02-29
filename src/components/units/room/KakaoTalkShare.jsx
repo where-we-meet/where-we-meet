@@ -22,6 +22,7 @@ function KakaoTalkShare({ room }) {
         objectType: 'text',
         text: `${room.roomName} 모임 링크 바로가기`,
         link: {
+          mobileWebUrl: `${import.meta.env.VITE_APP_BASE_ROOM_URL}/${room.id}`,
           webUrl: `${import.meta.env.VITE_APP_BASE_ROOM_URL}/${room.id}`
         }
       });
