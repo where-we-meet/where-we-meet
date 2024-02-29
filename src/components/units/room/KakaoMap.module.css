@@ -10,3 +10,30 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.spots_container{
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  overflow: scroll;
+  margin-top:10px
+}
+
+.spot_info_container{
+  padding : 20px;
+  background-color: #dddddd;
+}
+
+.spot_info_container:nth-child(2n){
+  border-top : 1px solid #808574;
+  border-bottom: 1px solid #808574;;
+}
+.spot_info_container h3 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.spot_info_container p {
+  font-size: 15px;
+  line-height: 20px;
+}
