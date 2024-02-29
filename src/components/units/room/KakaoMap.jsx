@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import CenterFlagButton from './CenterFlagButton';
 import { setViewPoint, setZoomLevel } from '@/redux/modules/mapSlice';
 import RangeLocationSearch from './RangeLocationSearch';
-import { useState } from 'react';
 
 function KakaoMap() {
   const [loading, error] = useKakaoLoader();
@@ -15,7 +14,6 @@ function KakaoMap() {
 
   const zoomLevel = useSelector((state) => state.mapSlice.zoomLevel);
   const viewPoint = useSelector((state) => state.mapSlice.viewPoint);
-  const [rangeLocationList, setRangeLocationList] = useState([]);
 
   const handleViewPoint = (map) => {
     const latlng = map.getCenter();
@@ -42,28 +40,12 @@ function KakaoMap() {
         onZoomChanged={handleZoomChanged}
         onDragEnd={(map) => handleViewPoint(map)}
       >
-        <RangeLocationSearch rangeLocationList={rangeLocationList} setRangeLocationList={setRangeLocationList} />
         <Halfway />
         <div className={styles.map_footer}>
           <KakaoMapCircle zoomLevel={zoomLevel} />
           <CenterFlagButton />
         </div>
-        {rangeLocationList.length > 0 ? (
-          <section>
-            <h2 id="list" className={styles.spots_container_title}>
-              <a href="#list">범위 내 장소 목록</a>
-            </h2>
-            <ul className={styles.spots_container}>
-              {rangeLocationList.map((spot) => (
-                <li key={spot.id} className={styles.spot_info_container}>
-                  <h3>{spot.place_name}</h3>
-                  <p>{spot.category_group_name}</p>
-                  <p>주소: {spot.road_address_name}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
+        <RangeLocationSearch />
       </Map>
     </>
   );
