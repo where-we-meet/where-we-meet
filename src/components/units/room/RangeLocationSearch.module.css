@@ -18,7 +18,7 @@
   border: 2px solid #ddd;
   display: flex;
   flex-direction: column;
-  height: 500px;
+  max-height: 500px;
   overflow-y: auto;
   margin-top: 10px;
   background-color: #f6f8fa;
