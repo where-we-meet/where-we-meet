@@ -93,7 +93,7 @@ function MapWithSearch() {
     handleChangeViewPoint(place);
   };
   //viewpoint 변경 (state update)
-  const handleChangeViewPoint = ({ place, event }) => {
+  const handleChangeViewPoint = (place, event) => {
     event.stopPropagation();
     dispatch(setViewPoint(changeAxiosToViewPoint(place)));
   };
@@ -151,14 +151,14 @@ function MapWithSearch() {
               <li
                 key={place.id}
                 onClick={(event) => {
-                  handleChangeViewPoint({ place, event });
+                  handleChangeViewPoint(place, event);
                 }}
               >
                 <p className={styles.place_name}>{place.place_name}</p>
                 <p className={styles.road_address_name}>{place.road_address_name}</p>
                 <p className={styles.category_group_name}>{place.category_group_name}</p>
                 <button
-                  onClick={(event) => {
+                  onClick={() => {
                     handleSetMyLocation(place);
                   }}
                 >
