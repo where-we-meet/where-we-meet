@@ -48,16 +48,22 @@ function KakaoMap() {
           <KakaoMapCircle zoomLevel={zoomLevel} />
           <CenterFlagButton />
         </div>
-        <p>범위 내 장소 목록</p>
-        <div className={styles.spots_container}>
-          {rangeLocationList.map((spot) => (
-            <div key={spot.id} className={styles.spot_info_container}>
-              <h3>{spot.place_name}</h3>
-              <p>{spot.category_group_name}</p>
-              <p>주소: {spot.road_address_name}</p>
-            </div>
-          ))}
-        </div>
+        {rangeLocationList.length > 0 ? (
+          <section>
+            <h2 id="list" className={styles.spots_container_title}>
+              <a href="#list">범위 내 장소 목록</a>
+            </h2>
+            <ul className={styles.spots_container}>
+              {rangeLocationList.map((spot) => (
+                <li key={spot.id} className={styles.spot_info_container}>
+                  <h3>{spot.place_name}</h3>
+                  <p>{spot.category_group_name}</p>
+                  <p>주소: {spot.road_address_name}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
       </Map>
     </>
   );

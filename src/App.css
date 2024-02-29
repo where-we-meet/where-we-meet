@@ -11,6 +11,10 @@
   font-family: 'AppleSDGothicNeo';
 }
 
+body {
+  overflow-y: overlay;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -27,4 +31,14 @@ button {
 input {
   font-size: 100%;
   background-color: #fcfcfc;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 8px;
 }
