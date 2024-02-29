@@ -2,7 +2,7 @@ import { client } from '@/apis/keywordSearchListAPI';
 import { useEffect, useState } from 'react';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import { useSelector } from 'react-redux';
-import pin from '@assets/icons/map-pin-2-fill.png';
+import pin from '@assets/icons/pin7.svg';
 import style from './RangeLocationSearch.module.css';
 
 function RangeLocationSearch({ rangeLocationList, setRangeLocationList }) {
