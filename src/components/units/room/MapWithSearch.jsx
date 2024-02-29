@@ -89,7 +89,8 @@ function MapWithSearch() {
     handleChangeViewPoint(place);
   };
   //viewpoint 변경 (state update)
-  const handleChangeViewPoint = (place) => {
+  const handleChangeViewPoint = ({ place, event }) => {
+    event.stopPropagation();
     dispatch(setViewPoint(changeAxiosToViewPoint(place)));
   };
 
@@ -112,8 +113,7 @@ function MapWithSearch() {
     patchUserLocation(updatedUserInfo);
   };
 
-  const handleSetMyLocation = async ({ place, event }) => {
-    event.stopPropagation();
+  const handleSetMyLocation = async (place) => {
     await updateLocation(place);
   };
 
@@ -146,8 +146,8 @@ function MapWithSearch() {
             {placeList.map((place) => (
               <li
                 key={place.id}
-                onClick={() => {
-                  handleChangeViewPoint(place);
+                onClick={(event) => {
+                  handleChangeViewPoint({ place, event });
                 }}
               >
                 <p className={styles.place_name}>{place.place_name}</p>
@@ -155,7 +155,7 @@ function MapWithSearch() {
                 <p className={styles.category_group_name}>{place.category_group_name}</p>
                 <button
                   onClick={(event) => {
-                    handleSetMyLocation({ place, event });
+                    handleSetMyLocation(place);
                   }}
                 >
                   이 위치로 지정
