@@ -1,4 +1,4 @@
-# where-we-meet
+[# where-we-meet
 
 # 1. 팀 및 프로젝트 소개
 
@@ -19,3 +19,4 @@ where we meet 는 모임 방을 생성하고, 모임 방에서 각자의 위치�
 1. 모임 방 생성
 2. 간이 로그인으로 이름 및 위치 등록 가능
 3. 등록된 유저들의 위치 기반으로 중심점을 찾고, 중심점을 기반으로 주변 만남 장소 추천
+](https://nbcamp2024.slack.com/archives/C06KGLWLTND/p1709190295280819)https://nbcamp2024.slack.com/archives/C06KGLWLTND/p1709190295280819
