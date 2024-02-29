@@ -112,7 +112,8 @@ function MapWithSearch() {
     patchUserLocation(updatedUserInfo);
   };
 
-  const handleSetMyLocation = async (place) => {
+  const handleSetMyLocation = async ({ place, event }) => {
+    event.stopPropagation();
     await updateLocation(place);
   };
 
@@ -153,8 +154,8 @@ function MapWithSearch() {
                 <p className={styles.road_address_name}>{place.road_address_name}</p>
                 <p className={styles.category_group_name}>{place.category_group_name}</p>
                 <button
-                  onClick={() => {
-                    handleSetMyLocation(place);
+                  onClick={(event) => {
+                    handleSetMyLocation({ place, event });
                   }}
                 >
                   이 위치로 지정
